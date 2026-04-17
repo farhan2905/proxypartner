@@ -84,6 +84,12 @@ export default function Hero() {
   const contentOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
   const contentY = useTransform(scrollYProgress, [0, 0.2], [0, -60]);
 
+  // Step-by-step fades
+  const badgeOpacity = useTransform(scrollYProgress, [0, 0.05], [1, 0]);
+  const headingOpacity = useTransform(scrollYProgress, [0, 0.08], [1, 0]);
+  const paragraphOpacity = useTransform(scrollYProgress, [0.03, 0.12], [1, 0]);
+  const buttonsOpacity = useTransform(scrollYProgress, [0.06, 0.15], [1, 0]);
+
   return (
     <section ref={heroRef} className="relative min-h-[100svh] flex items-center bg-[#121212] overflow-hidden pt-16 pb-12 lg:pt-0 lg:pb-0">
       {/* Noise overlay */}
@@ -133,15 +139,16 @@ export default function Hero() {
       </motion.div>
 
       <motion.div 
-        style={{ opacity: contentOpacity, y: contentY }}
+        style={{ y: contentY }}
         className="relative z-20 max-w-7xl mx-auto px-6 w-full flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20"
       >
         {/* Left Content Area */}
         <div className="w-full lg:w-1/2 text-left pt-12 lg:pt-0">
           {/* Status Badge */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            style={{ opacity: badgeOpacity }}
+            initial={{ y: 20 }}
+            animate={{ y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
             className="inline-flex items-center gap-3 glass px-4 py-2 rounded-full mb-8 border border-white/10"
           >
@@ -152,48 +159,53 @@ export default function Hero() {
           </motion.div>
 
           {/* Word-by-word hero heading */}
-          <motion.h1
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            className="text-[clamp(2rem,5vw,4.5rem)] font-bold text-white leading-[1.05] tracking-[-0.03em] mb-6 drop-shadow-2xl max-w-2xl"
-          >
-            {headingWords.map((word, index) => (
-              <motion.span
-                key={index}
-                variants={wordVariants}
-                className="inline-block whitespace-pre"
-              >
-                {word === 'grow' ? (
-                  <span className="text-[#e4fe7b]">{word}</span>
-                ) : (
-                  word
-                )}
-                {index !== headingWords.length - 1 && ' '}
-              </motion.span>
-            ))}
-          </motion.h1>
+          <motion.div style={{ opacity: headingOpacity }}>
+            <motion.h1
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+              className="text-[clamp(2rem,5vw,4.5rem)] font-bold text-white leading-[1.05] tracking-[-0.03em] mb-6 drop-shadow-2xl max-w-2xl"
+            >
+              {headingWords.map((word, index) => (
+                <motion.span
+                  key={index}
+                  variants={wordVariants}
+                  className="inline-block whitespace-pre"
+                >
+                  {word === 'grow' ? (
+                    <span className="text-[#e4fe7b]">{word}</span>
+                  ) : (
+                    word
+                  )}
+                  {index !== headingWords.length - 1 && ' '}
+                </motion.span>
+              ))}
+            </motion.h1>
+          </motion.div>
 
           {/* Subtitle */}
-          <motion.p
-            variants={fadeUpVariants}
-            initial="hidden"
-            animate="visible"
-            transition={{ delay: 1.2, duration: 0.8 }}
-            className="text-white/60 text-base md:text-lg max-w-xl mb-10 leading-relaxed"
-          >
-            We take your big ideas and turn them into clear, winning strategies. From content creation to AI-powered solutions, we handle the full spectrum of digital growth.
-          </motion.p>
+          <motion.div style={{ opacity: paragraphOpacity }}>
+            <motion.p
+              variants={fadeUpVariants}
+              initial="hidden"
+              animate="visible"
+              transition={{ delay: 1.2, duration: 0.8 }}
+              className="text-white/60 text-base md:text-lg max-w-xl mb-10 leading-relaxed"
+            >
+              We take your big ideas and turn them into clear, winning strategies. From content creation to AI-powered solutions, we handle the full spectrum of digital growth.
+            </motion.p>
+          </motion.div>
 
           {/* CTA Buttons */}
-          <motion.div
-            variants={fadeUpVariants}
-            initial="hidden"
-            animate="visible"
-            transition={{ delay: 1.5, duration: 0.8 }}
-            className="flex flex-col sm:flex-row items-start sm:items-center gap-5"
-          >
-            <a
+          <motion.div style={{ opacity: buttonsOpacity }}>
+            <motion.div
+              variants={fadeUpVariants}
+              initial="hidden"
+              animate="visible"
+              transition={{ delay: 1.5, duration: 0.8 }}
+              className="flex flex-col sm:flex-row items-start sm:items-center gap-5"
+            >
+              <a
               href="#contact"
               onClick={(e) => {
                 e.preventDefault();
@@ -217,6 +229,7 @@ export default function Hero() {
               </div>
               Our Work
             </a>
+          </motion.div>
           </motion.div>
         </div>
 

@@ -294,3 +294,6 @@ mark {
 .nav-link:hover::after {
   width: 100%;
 }
+
+html { font-size: 13px; }
+

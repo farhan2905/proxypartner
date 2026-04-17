@@ -167,28 +167,31 @@ export default function Services() {
   const activeService = services[activeIndex];
 
   return (
-    <section id="services" ref={containerRef} className="relative h-[420vh] bg-[#0a0a0a]">
+    <section id="services" ref={containerRef} className="relative h-[420vh] bg-[#121212]">
       {/* Sticky visible area */}
       <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col items-center pt-24 md:pt-32">
         
         {/* Background ambient glow */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-          <div className="noise-overlay absolute inset-0 opacity-50" />
+          <div className="noise-overlay absolute inset-0 opacity-40" />
           <motion.div 
             animate={{ 
-              background: `radial-gradient(circle at 50% 50%, ${activeService.color}20 0%, transparent 60%)` 
+              background: `radial-gradient(circle at 50% 50%, ${activeService.color}40 0%, transparent 60%)` 
             }}
             transition={{ duration: 1 }}
-            className="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[100vw] h-[100vw] opacity-40 blur-[100px]"
+            className="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[100vw] h-[100vw] opacity-60 blur-[100px]"
           />
         </div>
 
         {/* Section Header */}
         <div className="relative z-10 text-center px-6 mb-12">
           <SectionTag text="OUR SERVICES" variant="dark" />
-          <h2 className="text-2xl md:text-4xl font-bold text-white leading-tight tracking-tight mt-6">
+          <h2 className="text-2xl md:text-4xl font-bold text-white leading-tight tracking-tight mt-6 mb-4">
             Services that drive <mark>growth</mark>
           </h2>
+          <p className="text-white/60 text-lg max-w-2xl mx-auto">
+            No running around for different experts. We handle it all.
+          </p>
         </div>
 
         {/* The Wheel */}
@@ -220,7 +223,7 @@ export default function Services() {
 
         {/* Active Service Content Container */}
         {/* Rendered below the zenith point, overlapping the wheel */}
-        <div className="relative z-30 w-full max-w-4xl px-6 mt-[6vh] md:mt-[8vh]">
+        <div className="relative z-30 w-full max-w-4xl px-6 mt-[6vh] md:mt-[8vh] translate-y-[60px]">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeIndex}

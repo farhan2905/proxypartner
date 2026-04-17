@@ -65,11 +65,11 @@ export default function Process() {
   const activeStep = steps[activeIndex];
 
   return (
-    <section id="process" ref={containerRef} className="relative h-[200vh] bg-[#0a0a0a]">
+    <section id="process" ref={containerRef} className="relative h-[200vh] bg-[#121212]">
       {/* Background ambient light */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="noise-overlay absolute inset-0 opacity-40 z-[1]" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] md:w-[50vw] md:h-[50vw] bg-[#e4fe7b] rounded-full blur-[150px] opacity-[0.03]" />
+        <div className="noise-overlay absolute inset-0 opacity-30 z-[1]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] md:w-[50vw] md:h-[50vw] bg-[#e4fe7b] rounded-full blur-[150px] opacity-[0.08]" />
       </div>
 
       {/* Sticky visible area */}
@@ -101,7 +101,7 @@ export default function Process() {
                 {/* Internal colored glow corresponding to step color */}
                 <motion.div
                   initial={{ opacity: 0 }}
-                  animate={{ opacity: 0.15 }}
+                  animate={{ opacity: 0.25 }}
                   transition={{ duration: 1 }}
                   className="absolute -top-32 -right-32 w-96 h-96 rounded-full blur-[80px] pointer-events-none"
                   style={{ backgroundColor: activeStep.color }}
