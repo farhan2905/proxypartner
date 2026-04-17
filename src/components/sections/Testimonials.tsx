@@ -11,7 +11,7 @@ const testimonials = [
     name: 'Sarah Chen',
     role: 'CEO, TechFlow Inc.',
     initials: 'SC',
-    color: 'bg-[#e4fe7b]/20 text-[#1b1c1c]',
+    color: 'bg-[#e4fe7b]/20 text-[#1a2332]',
   },
   {
     quote:
@@ -49,7 +49,7 @@ export default function Testimonials() {
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <section ref={ref} className="relative bg-[#ffffe6] py-24 md:py-32 overflow-hidden">
+    <section ref={ref} className="relative bg-[#f0f5e8] py-24 md:py-32 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -58,10 +58,10 @@ export default function Testimonials() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <p className="font-mono text-[#506556] text-xs uppercase tracking-[0.2em] mb-4">
+          <p className="font-mono text-[#3d5a47] text-xs uppercase tracking-[0.2em] mb-4">
             Client Stories
           </p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#1b1c1c] tracking-tight">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#1a2332] tracking-tight">
             Loved by <mark>leaders</mark> worldwide
           </h2>
         </motion.div>
@@ -80,22 +80,22 @@ export default function Testimonials() {
               <Quote className="w-8 h-8 text-[#e4fe7b] mb-6 flex-shrink-0" />
 
               {/* Quote text */}
-              <p className="text-[#1b1c1c] text-base leading-relaxed mb-8 flex-grow">
+              <p className="text-[#1a2332] text-base leading-relaxed mb-8 flex-grow">
                 &ldquo;{testimonial.quote}&rdquo;
               </p>
 
               {/* Author */}
-              <div className="flex items-center gap-4 pt-6 border-t border-[#1b1c1c]/5">
+              <div className="flex items-center gap-4 pt-6 border-t border-[#1a2332]/5">
                 <div
                   className={`w-11 h-11 rounded-full ${testimonial.color} flex items-center justify-center text-sm font-bold flex-shrink-0`}
                 >
                   {testimonial.initials}
                 </div>
                 <div>
-                  <p className="text-[#1b1c1c] font-semibold text-sm">
+                  <p className="text-[#1a2332] font-semibold text-sm">
                     {testimonial.name}
                   </p>
-                  <p className="text-[#506556] text-xs">{testimonial.role}</p>
+                  <p className="text-[#3d5a47] text-xs">{testimonial.role}</p>
                 </div>
               </div>
             </motion.div>

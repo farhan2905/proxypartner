@@ -126,7 +126,7 @@ function WheelNode({
 
   return (
     <div
-      className="absolute top-[-40px] left-1/2 -translate-x-1/2 origin-[50%_640px] z-20 pointer-events-none"
+      className="absolute top-[-40px] left-1/2 -translate-x-1/2 origin-[50%_40rem] z-20 pointer-events-none"
       style={{ transform: `rotate(${angle}deg)` }}
     >
       <motion.div
@@ -167,9 +167,9 @@ export default function Services() {
   const activeService = services[activeIndex];
 
   return (
-    <section id="services" ref={containerRef} className="relative h-[420vh] bg-[#121212]">
+    <section id="services" ref={containerRef} className="relative h-[420vh] bg-[#161e28]">
       {/* Sticky visible area */}
-      <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col items-center pt-24 md:pt-32">
+      <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col items-start pt-24 md:pt-32">
         
         {/* Background ambient glow */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
@@ -184,12 +184,12 @@ export default function Services() {
         </div>
 
         {/* Section Header */}
-        <div className="relative z-10 text-center px-6 mb-12">
+        <div className="relative z-10 text-left px-6 mb-12 w-full max-w-4xl mx-auto">
           <SectionTag text="OUR SERVICES" variant="dark" />
           <h2 className="text-2xl md:text-4xl font-bold text-white leading-tight tracking-tight mt-6 mb-4">
             Services that drive <mark>growth</mark>
           </h2>
-          <p className="text-white/60 text-lg max-w-2xl mx-auto">
+          <p className="text-white/70 text-lg max-w-2xl">
             No running around for different experts. We handle it all.
           </p>
         </div>
@@ -199,15 +199,15 @@ export default function Services() {
         <motion.div
           className="absolute left-1/2 rounded-full border border-white/5 z-0"
           style={{
-            width: '1200px',
-            height: '1200px',
+            width: '75rem',
+            height: '75rem',
             top: '30vh',
             x: '-50%',
             rotate: wheelRotation,
           }}
         >
           {/* Wheel inner circles for aesthetics */}
-          <div className="absolute inset-[100px] rounded-full border border-white/5 border-dashed opacity-50" />
+          <div className="absolute inset-[100px] rounded-full border border-white/8 border-dashed opacity-50" />
           <div className="absolute inset-[200px] rounded-full border border-white/[0.02]" />
           
           {services.map((service, i) => (
@@ -223,7 +223,7 @@ export default function Services() {
 
         {/* Active Service Content Container */}
         {/* Rendered below the zenith point, overlapping the wheel */}
-        <div className="relative z-30 w-full max-w-4xl px-6 mt-[6vh] md:mt-[8vh] translate-y-[60px]">
+        <div className="relative z-30 w-full max-w-4xl px-6 mt-[10vh] md:mt-[12vh] translate-y-[80px] self-center">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeIndex}
@@ -245,7 +245,7 @@ export default function Services() {
                   <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
                     {activeService.title}
                   </h3>
-                  <p className="text-white/60 text-base leading-relaxed mb-8">
+                  <p className="text-white/70 text-base leading-relaxed mb-8">
                     {activeService.description}
                   </p>
                   

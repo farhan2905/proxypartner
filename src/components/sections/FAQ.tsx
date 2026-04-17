@@ -34,7 +34,7 @@ export default function FAQ() {
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <section ref={ref} className="bg-[#fafafa] py-16 md:py-24" id="faq">
+    <section ref={ref} className="bg-[#f5f7f2] py-16 md:py-24" id="faq">
       <div className="max-w-4xl mx-auto px-6">
         <div className="text-center mb-16">
           <SectionTag text="FAQ" variant="light" className="justify-center" />
@@ -42,7 +42,7 @@ export default function FAQ() {
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="text-2xl md:text-4xl font-bold text-[#1b1c1c] mt-6 leading-tight"
+            className="text-2xl md:text-4xl font-bold text-[#1a2332] mt-6 leading-tight"
           >
             Got questions? <br/>We&apos;ve got <mark className="bg-[#e4fe7b] px-2 rounded-lg">answers.</mark>
           </motion.h2>
@@ -60,17 +60,17 @@ export default function FAQ() {
             return (
               <div 
                 key={index} 
-                className={`border rounded-2xl overflow-hidden transition-colors duration-300 ${isOpen ? 'bg-white border-[#1b1c1c]/10 shadow-sm' : 'bg-transparent border-[#1b1c1c]/5 hover:border-[#1b1c1c]/10'}`}
+                className={`border rounded-2xl overflow-hidden transition-colors duration-300 ${isOpen ? 'bg-white border-[#1a2332]/10 shadow-sm' : 'bg-transparent border-[#1a2332]/5 hover:border-[#1a2332]/10'}`}
               >
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : index)}
                   className="w-full flex items-center justify-between p-5 text-left focus:outline-none"
                 >
-                  <span className={`font-bold text-base md:text-lg transition-colors ${isOpen ? 'text-[#1b1c1c]' : 'text-[#506556]'}`}>
+                  <span className={`font-bold text-base md:text-lg transition-colors ${isOpen ? 'text-[#1a2332]' : 'text-[#3d5a47]'}`}>
                     {faq.question}
                   </span>
                   <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-transform duration-300 shrink-0 ml-4 ${isOpen ? 'bg-[#e4fe7b] rotate-180' : 'bg-black/5'}`}>
-                    <ChevronDown className={`w-5 h-5 ${isOpen ? 'text-[#1b1c1c]' : 'text-[#1b1c1c]/50'}`} />
+                    <ChevronDown className={`w-5 h-5 ${isOpen ? 'text-[#1a2332]' : 'text-[#1a2332]/50'}`} />
                   </div>
                 </button>
                 <AnimatePresence initial={false}>
@@ -81,7 +81,7 @@ export default function FAQ() {
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.3, ease: 'easeInOut' }}
                     >
-                      <div className="px-5 pb-5 pt-0 text-[#506556] text-base leading-relaxed">
+                      <div className="px-5 pb-5 pt-0 text-[#3d5a47] text-base leading-relaxed">
                         {faq.answer}
                       </div>
                     </motion.div>

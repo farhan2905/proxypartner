@@ -91,7 +91,7 @@ export default function Hero() {
   const buttonsOpacity = useTransform(scrollYProgress, [0.06, 0.15], [1, 0]);
 
   return (
-    <section ref={heroRef} className="relative min-h-[100svh] flex items-center bg-[#121212] overflow-hidden pt-16 pb-12 lg:pt-0 lg:pb-0">
+    <section ref={heroRef} className="relative min-h-screen flex items-center bg-[#161e28] overflow-hidden pt-32 pb-24 lg:pt-0 lg:pb-0">
       {/* Noise overlay */}
       <div className="noise-overlay absolute inset-0 z-[1]" />
 
@@ -153,7 +153,7 @@ export default function Hero() {
             className="inline-flex items-center gap-3 glass px-4 py-2 rounded-full mb-8 border border-white/10"
           >
             <div className="w-2 h-2 rounded-full bg-[#e4fe7b] animate-pulse" />
-            <span className="text-white/70 text-xs font-mono tracking-widest uppercase">
+            <span className="text-white/80 text-xs font-mono tracking-widest uppercase">
               CONTENT · MARKETING · DEVELOPMENT · AI
             </span>
           </motion.div>
@@ -164,7 +164,7 @@ export default function Hero() {
               variants={containerVariants}
               initial="hidden"
               animate="visible"
-              className="text-[clamp(2rem,5vw,4.5rem)] font-bold text-white leading-[1.05] tracking-[-0.03em] mb-6 drop-shadow-2xl max-w-2xl"
+              className="text-[clamp(2rem,5vw,4.5rem)] font-bold text-white leading-tight tracking-[-0.03em] mb-6 drop-shadow-2xl max-w-2xl"
             >
               {headingWords.map((word, index) => (
                 <motion.span
@@ -190,7 +190,7 @@ export default function Hero() {
               initial="hidden"
               animate="visible"
               transition={{ delay: 1.2, duration: 0.8 }}
-              className="text-white/60 text-base md:text-lg max-w-xl mb-10 leading-relaxed"
+              className="text-white/70 text-base md:text-lg max-w-xl mb-10 leading-relaxed"
             >
               We take your big ideas and turn them into clear, winning strategies. From content creation to AI-powered solutions, we handle the full spectrum of digital growth.
             </motion.p>
@@ -211,7 +211,7 @@ export default function Hero() {
                 e.preventDefault();
                 document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="group relative inline-flex items-center justify-center gap-2 bg-[#e4fe7b] text-[#1b1c1c] px-8 py-4 rounded-full text-base font-semibold hover:bg-[#d4f06b] transition-all duration-300 hover:gap-3 shadow-[0_0_40px_rgba(228,254,123,0.2)] hover:shadow-[0_0_60px_rgba(228,254,123,0.4)] w-full sm:w-auto"
+              className="group relative inline-flex items-center justify-center gap-2 bg-[#e4fe7b] text-[#1a2332] px-8 py-4 rounded-full text-base font-semibold hover:bg-[#d4f06b] transition-all duration-300 hover:gap-3 shadow-[0_0_40px_rgba(228,254,123,0.25)] hover:shadow-[0_0_60px_rgba(228,254,123,0.45)] w-full sm:w-auto"
             >
               Get Started
               <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
@@ -234,7 +234,7 @@ export default function Hero() {
         </div>
 
         {/* Right Visual Area (Visible on Desktop) */}
-        <div className="hidden lg:block lg:w-1/2 relative h-[500px] w-full">
+        <div className="hidden lg:block lg:w-1/2 relative h-[31.25rem] w-full">
           {/* Floating Glassmorphism Cards */}
           {floatingCards.map((card, i) => (
             <motion.div

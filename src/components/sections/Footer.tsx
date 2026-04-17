@@ -23,7 +23,7 @@ const footerLinks = {
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0a0a0a] border-t border-white/5">
+    <footer className="bg-[#0f1419] border-t border-white/8">
       <div className="max-w-7xl mx-auto px-6 py-16 md:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           {/* Logo & Description */}
@@ -31,7 +31,7 @@ export default function Footer() {
             <a href="#" className="text-white font-bold text-2xl tracking-tight">
               elevate<span className="text-[#e4fe7b]">.</span>
             </a>
-            <p className="text-white/30 text-sm leading-relaxed mt-4 max-w-xs">
+            <p className="text-white/40 text-sm leading-relaxed mt-4 max-w-xs">
               We build digital experiences that drive growth. Strategy, design,
               development, and marketing — all under one roof.
             </p>
@@ -40,7 +40,7 @@ export default function Footer() {
                 <a
                   key={social}
                   href="#"
-                  className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-white/40 text-xs font-bold hover:border-[#e4fe7b]/30 hover:text-[#e4fe7b] transition-all duration-300"
+                  className="w-9 h-9 rounded-full border border-white/12 flex items-center justify-center text-white/50 text-xs font-bold hover:border-[#e4fe7b]/30 hover:text-[#e4fe7b] transition-all duration-300"
                 >
                   {social}
                 </a>
@@ -58,7 +58,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="text-white/30 text-sm hover:text-white/70 transition-colors"
+                    className="text-white/40 text-sm hover:text-white/70 transition-colors"
                   >
                     {link.label}
                   </a>
@@ -84,7 +84,7 @@ export default function Footer() {
                         if (el) el.scrollIntoView({ behavior: 'smooth' });
                       }
                     }}
-                    className="text-white/30 text-sm hover:text-white/70 transition-colors"
+                    className="text-white/40 text-sm hover:text-white/70 transition-colors"
                   >
                     {link.label}
                   </a>
@@ -100,33 +100,33 @@ export default function Footer() {
             </h4>
             <div className="space-y-4">
               <div>
-                <p className="text-white/20 text-xs font-mono uppercase tracking-wider mb-1">
+                <p className="text-white/30 text-xs font-mono uppercase tracking-wider mb-1">
                   Email
                 </p>
                 <a
                   href="mailto:hello@elevate.digital"
-                  className="text-white/50 text-sm hover:text-[#e4fe7b] transition-colors inline-flex items-center gap-1"
+                  className="text-white/60 text-sm hover:text-[#e4fe7b] transition-colors inline-flex items-center gap-1"
                 >
                   hello@elevate.digital
                   <ArrowUpRight className="w-3 h-3" />
                 </a>
               </div>
               <div>
-                <p className="text-white/20 text-xs font-mono uppercase tracking-wider mb-1">
+                <p className="text-white/30 text-xs font-mono uppercase tracking-wider mb-1">
                   Phone
                 </p>
                 <a
                   href="tel:+1234567890"
-                  className="text-white/50 text-sm hover:text-[#e4fe7b] transition-colors"
+                  className="text-white/60 text-sm hover:text-[#e4fe7b] transition-colors"
                 >
                   +1 (234) 567-890
                 </a>
               </div>
               <div>
-                <p className="text-white/20 text-xs font-mono uppercase tracking-wider mb-1">
+                <p className="text-white/30 text-xs font-mono uppercase tracking-wider mb-1">
                   Location
                 </p>
-                <p className="text-white/50 text-sm">
+                <p className="text-white/60 text-sm">
                   New York, NY
                 </p>
               </div>
@@ -136,16 +136,16 @@ export default function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-white/5">
+      <div className="border-t border-white/8">
         <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-white/20 text-xs">
+          <p className="text-white/30 text-xs">
             &copy; {new Date().getFullYear()} Elevate Digital. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
-            <a href="#" className="text-white/20 text-xs hover:text-white/40 transition-colors">
+            <a href="#" className="text-white/30 text-xs hover:text-white/50 transition-colors">
               Privacy Policy
             </a>
-            <a href="#" className="text-white/20 text-xs hover:text-white/40 transition-colors">
+            <a href="#" className="text-white/30 text-xs hover:text-white/50 transition-colors">
               Terms of Service
             </a>
           </div>

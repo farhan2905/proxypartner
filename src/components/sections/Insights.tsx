@@ -47,7 +47,7 @@ export default function Insights() {
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <section ref={ref} className="bg-[#121212] py-16 md:py-24" id="insights">
+    <section ref={ref} className="bg-[#161e28] py-16 md:py-24" id="insights">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
           <div className="max-w-2xl">
@@ -82,7 +82,7 @@ export default function Insights() {
               variants={cardVariants}
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
-              className="group flex flex-col h-full bg-white/5 rounded-3xl p-6 border border-white/5 hover:border-[#e4fe7b]/30 transition-all duration-500 hover:-translate-y-2 relative overflow-hidden"
+              className="group flex flex-col h-full bg-white/7 rounded-3xl p-6 border border-white/8 hover:border-[#e4fe7b]/30 transition-all duration-500 hover:-translate-y-2 relative overflow-hidden"
             >
               {/* Hover gradient effect */}
               <div className="absolute inset-0 bg-gradient-to-br from-[#e4fe7b]/0 to-[#e4fe7b]/0 group-hover:from-[#e4fe7b]/5 group-hover:to-transparent transition-colors duration-500 pointer-events-none" />
@@ -101,11 +101,11 @@ export default function Insights() {
                 {article.title}
               </h3>
               
-              <p className="text-white/60 leading-relaxed mt-auto relative z-10">
+              <p className="text-white/70 leading-relaxed mt-auto relative z-10">
                 {article.description}
               </p>
               
-              <div className="mt-8 flex items-center gap-2 text-white/40 group-hover:text-[#e4fe7b] transition-colors relative z-10 font-medium">
+              <div className="mt-8 flex items-center gap-2 text-white/50 group-hover:text-[#e4fe7b] transition-colors relative z-10 font-medium">
                 <span className="text-sm">Read more</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </div>

@@ -40,7 +40,7 @@ export default function Navigation() {
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? 'glass py-3'
+            ? 'backdrop-blur-md bg-[#0f1419]/95 border-b border-white/12 py-3 shadow-lg'
             : 'bg-transparent py-5'
         }`}
       >
@@ -82,7 +82,7 @@ export default function Navigation() {
                 e.preventDefault();
                 handleNavClick('#cta');
               }}
-              className="inline-flex items-center gap-2 bg-[#e4fe7b] text-[#1b1c1c] px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-[#d4f06b] transition-colors"
+              className="inline-flex items-center gap-2 bg-[#e4fe7b] text-[#1a2332] px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-[#d4f06b] transition-colors"
             >
               Start a Project
               <ArrowUpRight className="w-4 h-4" />
@@ -108,7 +108,7 @@ export default function Navigation() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-[#0a0a0a]/95 backdrop-blur-xl flex flex-col items-center justify-center gap-8"
+            className="fixed inset-0 z-40 bg-[#0f1419]/95 backdrop-blur-xl flex flex-col items-center justify-center gap-8"
           >
             {navLinks.map((link, i) => (
               <motion.a
@@ -137,7 +137,7 @@ export default function Navigation() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 20 }}
               transition={{ delay: navLinks.length * 0.08, duration: 0.4 }}
-              className="inline-flex items-center gap-2 bg-[#e4fe7b] text-[#1b1c1c] px-8 py-3 rounded-full text-lg font-semibold mt-4"
+              className="inline-flex items-center gap-2 bg-[#e4fe7b] text-[#1a2332] px-8 py-3 rounded-full text-lg font-semibold mt-4"
             >
               Start a Project
               <ArrowUpRight className="w-5 h-5" />

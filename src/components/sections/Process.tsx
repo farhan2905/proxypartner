@@ -65,7 +65,7 @@ export default function Process() {
   const activeStep = steps[activeIndex];
 
   return (
-    <section id="process" ref={containerRef} className="relative h-[200vh] bg-[#121212]">
+    <section id="process" ref={containerRef} className="relative h-[200vh] bg-[#161e28]">
       {/* Background ambient light */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="noise-overlay absolute inset-0 opacity-30 z-[1]" />
@@ -111,7 +111,7 @@ export default function Process() {
                   {/* Step number */}
                   <div className="flex-shrink-0">
                     <div 
-                      className="text-[64px] md:text-[100px] lg:text-[130px] font-bold leading-none tabular-nums"
+                      className="text-[4rem] md:text-[6.25rem] lg:text-[8.125rem] font-bold leading-none tabular-nums"
                       style={{ color: `${activeStep.color}25` }} // 25 hex opacity ~15%
                     >
                       {activeStep.number}

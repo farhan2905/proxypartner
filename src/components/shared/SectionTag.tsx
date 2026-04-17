@@ -24,7 +24,7 @@ export default function SectionTag({ text, variant = 'light', className }: Secti
       <span
         className={cn(
           'text-xs font-mono uppercase tracking-[0.15em] font-medium',
-          isLight ? 'text-[#506556]' : 'text-white/50'
+          isLight ? 'text-[#3d5a47]' : 'text-white/55'
         )}
       >
         {text}
@@ -32,7 +32,7 @@ export default function SectionTag({ text, variant = 'light', className }: Secti
       <span
         className={cn(
           'h-px flex-grow max-w-[60px]',
-          isLight ? 'bg-[#506556]/30' : 'bg-white/20'
+          isLight ? 'bg-[#3d5a47]/30' : 'bg-white/25'
         )}
       />
     </motion.div>

@@ -19,7 +19,7 @@ export default function Marquee() {
   const repeated = [...marqueeItems, ...marqueeItems];
 
   return (
-    <section className="relative bg-[#0a0a0a] py-8 overflow-hidden border-y border-white/5">
+    <section className="relative bg-[#0f1419] py-8 overflow-hidden border-y border-white/8">
       <div className="marquee-mask">
         <div className="animate-marquee flex items-center whitespace-nowrap">
           {repeated.map((item, i) => (

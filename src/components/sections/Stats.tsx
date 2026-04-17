@@ -58,7 +58,7 @@ export default function Stats() {
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <section id="stats" ref={ref} className="relative bg-[#0a0a0a] py-16 md:py-24 overflow-hidden">
+    <section id="stats" ref={ref} className="relative bg-[#0f1419] py-16 md:py-24 overflow-hidden">
       {/* Subtle background decoration */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#e4fe7b] rounded-full blur-[200px] opacity-[0.04]" />
 
@@ -70,7 +70,7 @@ export default function Stats() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <p className="font-mono text-white/30 text-xs uppercase tracking-[0.2em] mb-4">
+          <p className="font-mono text-white/45 text-xs uppercase tracking-[0.2em] mb-4">
             The Numbers
           </p>
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white tracking-tight">
@@ -93,7 +93,7 @@ export default function Stats() {
                 suffix={stat.suffix}
                 inView={isInView}
               />
-              <p className="text-white/40 text-sm mt-3 font-medium">
+              <p className="text-white/55 text-sm mt-3 font-medium">
                 {stat.label}
               </p>
             </motion.div>

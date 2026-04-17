@@ -54,7 +54,7 @@ export default function About() {
     <section
       id="about"
       ref={ref}
-      className="relative bg-[#ffffe6] py-16 md:py-24 overflow-hidden"
+      className="relative bg-[#f0f5e8] py-16 md:py-24 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-16 md:mb-20">
@@ -66,7 +66,7 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-              className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#1b1c1c] leading-tight tracking-tight"
+              className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#1a2332] leading-tight tracking-tight"
             >
               We don&apos;t just build brands. We build{' '}
               <mark>legacies</mark> that last.
@@ -81,7 +81,7 @@ export default function About() {
             transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
             className="flex items-end"
           >
-            <p className="text-[#506556] text-lg md:text-xl leading-relaxed">
+            <p className="text-[#3d5a47] text-lg md:text-xl leading-relaxed">
               Founded in 2019, Elevate Digital has helped over 200 brands scale
               their digital presence and achieve measurable growth. Our team of
               strategists, designers, developers, and marketers work as one to
@@ -104,12 +104,12 @@ export default function About() {
                 className="bg-white rounded-2xl p-5 md:p-6 group hover:shadow-xl hover:shadow-[#e4fe7b]/10 transition-all duration-500 hover:-translate-y-1"
               >
                 <div className="w-12 h-12 rounded-xl bg-[#e4fe7b]/20 flex items-center justify-center mb-5 group-hover:bg-[#e4fe7b]/40 transition-colors">
-                  <Icon className="w-6 h-6 text-[#1b1c1c]" />
+                  <Icon className="w-6 h-6 text-[#1a2332]" />
                 </div>
-                <h3 className="text-[#1b1c1c] font-bold text-lg mb-3">
+                <h3 className="text-[#1a2332] font-bold text-lg mb-3">
                   {benefit.title}
                 </h3>
-                <p className="text-[#506556] text-sm leading-relaxed">
+                <p className="text-[#3d5a47] text-sm leading-relaxed">
                   {benefit.description}
                 </p>
               </motion.div>

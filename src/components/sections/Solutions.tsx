@@ -46,7 +46,7 @@ export default function Solutions() {
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <section ref={ref} className="bg-[#111111] py-16 md:py-24 relative overflow-hidden" id="solutions">
+    <section ref={ref} className="bg-[#141c24] py-16 md:py-24 relative overflow-hidden" id="solutions">
       {/* Subtle Background Elements */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-bl from-[#e4fe7b]/5 to-transparent rounded-full blur-[100px] pointer-events-none" />
       
@@ -65,7 +65,7 @@ export default function Solutions() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ delay: 0.2, duration: 0.7 }}
-            className="text-white/60 text-lg"
+            className="text-white/70 text-lg"
           >
             It&apos;s easy to get lost in a sea of advice, conflicting opinions, and endless &apos;must-dos.&apos; We filter out the noise, focus on what truly matters, and give you the kind of clarity that lets your brand shine.
           </motion.p>
@@ -81,7 +81,7 @@ export default function Solutions() {
                 variants={cardVariants}
                 initial="hidden"
                 animate={isInView ? "visible" : "hidden"}
-                className="glass-panel p-6 md:p-8 rounded-3xl border border-white/5 hover:border-[#e4fe7b]/30 transition-all duration-500 group"
+                className="glass-panel p-6 md:p-8 rounded-3xl border border-white/8 hover:border-[#e4fe7b]/30 transition-all duration-500 group"
               >
                 <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-[#e4fe7b]/10 transition-all duration-300">
                   <Icon className="w-6 h-6 text-white group-hover:text-[#e4fe7b] transition-colors" />
@@ -89,7 +89,7 @@ export default function Solutions() {
                 <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-[#e4fe7b] transition-colors">
                   {solution.title}
                 </h3>
-                <p className="text-white/60 leading-relaxed text-lg">
+                <p className="text-white/70 leading-relaxed text-lg">
                   {solution.description}
                 </p>
               </motion.div>
