@@ -72,7 +72,7 @@ export default function Process() {
   const activeWork = works[activeIndex];
 
   return (
-    <section id="work" ref={containerRef} className="relative h-[200vh] bg-[#161e28]">
+    <section id="work" ref={containerRef} className="relative h-[400vh] bg-[#161e28]">
       {/* Background ambient light */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="noise-overlay absolute inset-0 opacity-30 z-[1]" />

@@ -54,7 +54,7 @@ export default function Navigation() {
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
           >
-            elevate<span className="text-[#e4fe7b]">.</span>
+            iknowdata<span className="text-[#e4fe7b]">.in</span>
           </a>
 
           {/* Desktop Nav Links */}

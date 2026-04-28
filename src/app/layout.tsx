@@ -15,24 +15,24 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Elevate Digital | Creative Digital Marketing Agency",
+  title: " AI Automation & Software Development",
   description:
-    "We build digital experiences that drive growth. Strategy, design, development, and marketing — all under one roof.",
+    "The Anti-Agency Expert. We build custom software, digital experiences, and AI automations that drive business growth.",
   keywords: [
-    "digital marketing",
+    "AI automation",
+    "software development",
     "web development",
-    "brand identity",
     "AI solutions",
     "growth strategy",
-    "creative agency",
+    "tech consultancy",
   ],
-  authors: [{ name: "Elevate Digital" }],
+  authors: [{ name: "iknowdata" }],
   icons: {
-    icon: "/logo.svg",
+    icon: "",
   },
   openGraph: {
-    title: "Elevate Digital | Creative Digital Marketing Agency",
-    description: "We build digital experiences that drive growth.",
+    title: "iknowdata | AI Automation & Software Development",
+    description: "We build custom software and AI automations that drive business growth.",
     type: "website",
   },
 };
