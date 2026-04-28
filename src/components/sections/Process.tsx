@@ -3,49 +3,55 @@
 import { useRef, useState } from 'react';
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
 import SectionTag from '@/components/shared/SectionTag';
+import { ArrowUpRight } from 'lucide-react'; // Add this near imports
 
-const steps = [
+const works = [
   {
     number: '01',
-    title: 'Discovery',
+    title: 'Desh Yatraa',
     description:
-      'We dive deep into your business, audience, and goals. Through comprehensive audits and stakeholder interviews, we uncover the insights that shape a winning strategy tailored to your unique position in the market.',
-    detail: 'Research & Analysis',
-    icon: '🔍',
+      'We engineered a comprehensive travel booking and exploration portal for Desh Yatraa. The platform features an intuitive search architecture, seamless booking workflows, and an optimized mobile experience.',
+    detail: 'Travel & Tourism Portal',
+    icon: '✈️',
     color: '#e4fe7b',
+    link: 'https://deshyatraa.com',
   },
   {
     number: '02',
-    title: 'Strategy',
+    title: 'Voyage Horizon',
     description:
-      'Our team crafts a detailed roadmap combining data-driven insights with creative thinking. We identify the channels, tactics, and technologies that will maximize your ROI and accelerate growth.',
-    detail: 'Planning & Roadmap',
-    icon: '🗺️',
+      'Developed a modern digital storefront for Voyage Horizon to showcase their premium travel packages. We focused on high-performance media delivery, lead generation forms, and a custom CMS.',
+    detail: 'Travel Agency Platform',
+    icon: '🌊',
     color: '#e83043',
+    link: 'https://voyagehorizon.co.in',
   },
   {
     number: '03',
-    title: 'Execute',
+    title: 'Kuch Nahi',
     description:
-      'We bring the strategy to life with precision and creativity. Our cross-functional teams work in sprints, delivering measurable results through continuous optimization and transparent reporting.',
-    detail: 'Build & Launch',
-    icon: '🚀',
+      'Built a blazing-fast, custom e-commerce solution for Kuch Nahi. The architecture was designed from the ground up to minimize cart abandonment, featuring a hyper-optimized checkout flow and secure payment gateways.',
+    detail: 'E-Commerce Experience',
+    icon: '🛒',
     color: '#3b82f6',
+    link: 'https://kuchnahi.co.in',
   },
   {
     number: '04',
-    title: 'Scale',
+    title: 'Bhairav Steel',
     description:
-      'We analyze performance data, refine approaches, and identify new opportunities. Our focus shifts to sustainable growth — scaling what works, eliminating what doesn\'t, and keeping you ahead of the curve.',
-    detail: 'Optimize & Grow',
-    icon: '📈',
+      'Transformed Bhairav Steel\'s traditional business into a powerful digital catalog. We developed a robust B2B platform that handles complex product specifications and quote request automation.',
+    detail: 'B2B Industrial Catalog',
+    icon: '🏗️',
     color: '#a855f7',
+    link: 'https://bhairavsteel.in',
   },
 ];
 
 export default function Process() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isInteractive, setIsInteractive] = useState(false);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -54,18 +60,19 @@ export default function Process() {
 
   useMotionValueEvent(scrollYProgress, 'change', (latest) => {
     // 4 items means 3 intervals to scroll through.
-    const intervals = steps.length - 1;
+    const intervals = works.length - 1;
     let index = Math.round(latest * intervals);
     index = Math.max(0, Math.min(intervals, index));
     if (index !== activeIndex) {
       setActiveIndex(index);
+      setIsInteractive(false); // Reset interaction when scrolling changes the active item
     }
   });
 
-  const activeStep = steps[activeIndex];
+  const activeWork = works[activeIndex];
 
   return (
-    <section id="process" ref={containerRef} className="relative h-[200vh] bg-[#161e28]">
+    <section id="work" ref={containerRef} className="relative h-[200vh] bg-[#161e28]">
       {/* Background ambient light */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="noise-overlay absolute inset-0 opacity-30 z-[1]" />
@@ -73,18 +80,18 @@ export default function Process() {
       </div>
 
       {/* Sticky visible area */}
-      <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden z-10">
-        <div className="max-w-5xl mx-auto w-full px-6">
-          <SectionTag text="OUR PROCESS" variant="dark" />
+      <div className="sticky top-0 h-[100dvh] flex flex-col justify-center overflow-hidden z-10">
+        <div className="max-w-7xl mx-auto w-full px-6 py-12 md:py-0">
+          <SectionTag text="OUR WORK" variant="dark" />
 
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight tracking-tight mb-12"
+            className="text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight tracking-tight mb-8 md:mb-12"
           >
-            Making <mark>magic</mark> in four moves
+            Digital <mark>systems</mark> built for real businesses.
           </motion.h2>
 
           {/* Active step card */}
@@ -96,51 +103,100 @@ export default function Process() {
                 animate={{ opacity: 1, scale: 1, y: 0, filter: 'blur(0px)' }}
                 exit={{ opacity: 0, scale: 0.95, y: -30, filter: 'blur(10px)' }}
                 transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                className="glass-card rounded-[2rem] md:rounded-[3rem] p-8 md:p-12 lg:p-16 relative overflow-hidden"
+                className="glass-card rounded-[2rem] md:rounded-[3rem] p-6 sm:p-8 md:p-10 lg:p-14 relative overflow-hidden flex flex-col max-h-[85vh] md:max-h-none"
               >
                 {/* Internal colored glow corresponding to step color */}
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 0.25 }}
                   transition={{ duration: 1 }}
-                  className="absolute -top-32 -right-32 w-96 h-96 rounded-full blur-[80px] pointer-events-none"
-                  style={{ backgroundColor: activeStep.color }}
+                  className="absolute -top-32 -right-32 w-96 h-96 rounded-full blur-[80px] pointer-events-none hidden md:block"
+                  style={{ backgroundColor: activeWork.color }}
                 />
 
-                <div className="flex flex-col md:flex-row items-start gap-6 md:gap-10 relative z-10">
-                  {/* Step number */}
-                  <div className="flex-shrink-0">
-                    <div 
-                      className="text-[4rem] md:text-[6.25rem] lg:text-[8.125rem] font-bold leading-none tabular-nums"
-                      style={{ color: `${activeStep.color}25` }} // 25 hex opacity ~15%
-                    >
-                      {activeStep.number}
+                <div className="flex flex-col lg:flex-row items-center gap-6 md:gap-8 lg:gap-12 relative z-10 w-full overflow-y-auto md:overflow-visible pr-2 md:pr-0 custom-scrollbar flex-1">
+                  
+                  {/* Left Column: Number & Content */}
+                  <div className="flex flex-col md:flex-row items-start gap-4 md:gap-8 lg:gap-10 flex-1">
+                    {/* Step number */}
+                    <div className="flex-shrink-0 hidden lg:block">
+                      <div 
+                        className="text-[4rem] lg:text-[5rem] xl:text-[6rem] font-bold leading-none tabular-nums"
+                        style={{ color: `${activeWork.color}25` }}
+                      >
+                        {activeWork.number}
+                      </div>
+                    </div>
+
+                    {/* Step content */}
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-3 mb-3 md:mb-4">
+                        <span className="text-xl md:text-2xl">{activeWork.icon}</span>
+                        <span className="text-white/40 text-[10px] md:text-xs font-mono uppercase tracking-widest bg-white/5 px-2 md:px-3 py-1 rounded-full border border-white/10">
+                          {activeWork.detail}
+                        </span>
+                      </div>
+
+                      <h3 className="text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-bold text-white mb-3 md:mb-4 tracking-tight leading-tight">
+                        {activeWork.title}
+                      </h3>
+
+                      <p className="text-white/70 text-lg md:text-xl leading-relaxed mb-6 md:mb-8 max-w-xl">
+                        {activeWork.description}
+                      </p>
+
+                      <a 
+                        href={activeWork.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-5 py-2.5 md:px-6 md:py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full text-white font-medium transition-colors text-sm md:text-base w-fit"
+                      >
+                        View Live Website <ArrowUpRight className="w-4 h-4" />
+                      </a>
                     </div>
                   </div>
 
-                  {/* Step content */}
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-3 mb-3">
-                      <span className="text-2xl">{activeStep.icon}</span>
-                      <span className="text-white/40 text-xs font-mono uppercase tracking-widest bg-white/5 px-3 py-1 rounded-full border border-white/10">
-                        {activeStep.detail}
-                      </span>
-                    </div>
-
-                    <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6 tracking-tight">
-                      {activeStep.title}
-                    </h3>
-
-                    <p className="text-white/60 text-base md:text-lg leading-relaxed max-w-lg">
-                      {activeStep.description}
-                    </p>
+                  {/* Right Column: Live Iframe Preview */}
+                  <div 
+                    className="w-full lg:w-[45%] xl:w-[50%] h-[200px] sm:h-[300px] md:h-[400px] lg:h-[450px] xl:h-[500px] flex-shrink-0 bg-[#0f1419] rounded-xl overflow-hidden border border-white/10 shadow-2xl relative transition-all duration-300 mt-4 lg:mt-0"
+                    onMouseLeave={() => setIsInteractive(false)}
+                  >
+                     {/* Browser Header */}
+                     <div className="absolute top-0 left-0 right-0 h-8 bg-white/5 border-b border-white/10 flex items-center px-4 gap-2 z-20 backdrop-blur-md">
+                       <div className="w-2.5 h-2.5 rounded-full bg-red-500/80"></div>
+                       <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></div>
+                       <div className="w-2.5 h-2.5 rounded-full bg-green-500/80"></div>
+                     </div>
+                     {/* Iframe container */}
+                     <div className="w-full h-full pt-8 relative z-10 bg-white">
+                       <iframe 
+                         src={activeWork.link} 
+                         className="w-full h-full border-none"
+                         sandbox="allow-scripts allow-same-origin"
+                         title={`${activeWork.title} live preview`}
+                       />
+                       {/* Transparent overlay to stop mouse scroll trapping - click to interact */}
+                       <div 
+                         className={`absolute inset-0 z-20 flex items-center justify-center transition-all duration-300 group ${
+                           isInteractive ? 'opacity-0 pointer-events-none' : 'opacity-100 bg-black/10 md:bg-transparent md:hover:bg-black/10 cursor-pointer pointer-events-auto'
+                         }`}
+                         onClick={() => setIsInteractive(true)}
+                       >
+                         {!isInteractive && (
+                           <span className="px-4 py-2 bg-black/70 backdrop-blur-md text-white shadow-xl text-sm font-medium rounded-full opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity flex items-center gap-2">
+                             Tap to interact
+                           </span>
+                         )}
+                       </div>
+                     </div>
                   </div>
+
                 </div>
 
                 {/* Decorative bottom bar */}
-                <div className="mt-12 pt-8 border-t border-white/10 flex items-center justify-between relative z-10">
-                  <div className="flex items-center gap-4">
-                    {steps.map((step, i) => (
+                <div className="mt-8 md:mt-12 pt-6 md:pt-8 border-t border-white/10 flex items-center justify-between relative z-10 flex-shrink-0">
+                  <div className="flex items-center gap-3 md:gap-4">
+                    {works.map((work, i) => (
                       <div
                         key={i}
                         className={`transition-all duration-500 rounded-full ${
@@ -150,12 +206,12 @@ export default function Process() {
                               ? 'w-2 h-2 opacity-40'
                               : 'w-2 h-2 bg-white/10'
                         }`}
-                        style={{ backgroundColor: i <= activeIndex ? step.color : undefined }}
+                        style={{ backgroundColor: i <= activeIndex ? work.color : undefined }}
                       />
                     ))}
                   </div>
                   <span className="text-white/30 text-xs font-mono bg-black/20 px-3 py-1.5 rounded-full border border-white/5">
-                    Step {activeIndex + 1} of {steps.length}
+                    Project {activeIndex + 1} of {works.length}
                   </span>
                 </div>
               </motion.div>

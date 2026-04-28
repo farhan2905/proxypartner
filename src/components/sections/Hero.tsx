@@ -46,7 +46,7 @@ const fadeUpVariants = {
 const floatingCards = [
   {
     icon: Sparkles,
-    text: 'AI Integration',
+    text: 'AI Agents',
     delay: 1.5,
     top: '10%',
     left: '10%',
@@ -54,7 +54,7 @@ const floatingCards = [
   },
   {
     icon: Zap,
-    text: 'Growth Hacking',
+    text: 'Custom Software',
     delay: 1.7,
     top: '45%',
     right: '-5%',
@@ -154,7 +154,7 @@ export default function Hero() {
           >
             <div className="w-2 h-2 rounded-full bg-[#e4fe7b] animate-pulse" />
             <span className="text-white/80 text-xs font-mono tracking-widest uppercase">
-              CONTENT · MARKETING · DEVELOPMENT · AI
+              SOFTWARE · DEVELOPMENT · AUTOMATION · AI
             </span>
           </motion.div>
 
@@ -192,7 +192,7 @@ export default function Hero() {
               transition={{ delay: 1.2, duration: 0.8 }}
               className="text-white/70 text-base md:text-lg max-w-xl mb-10 leading-relaxed"
             >
-              We take your big ideas and turn them into clear, winning strategies. From content creation to AI-powered solutions, we handle the full spectrum of digital growth.
+              We take your big ideas and turn them into clear, winning software and automation systems. From custom web development to AI-powered solutions, we handle the full spectrum of technical growth.
             </motion.p>
           </motion.div>
 

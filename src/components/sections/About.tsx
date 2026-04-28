@@ -13,23 +13,23 @@ import SectionTag from '@/components/shared/SectionTag';
 const benefits = [
   {
     icon: Target,
-    title: 'Data-Driven Strategy',
-    description: 'Every decision backed by analytics and real market data for maximum impact.',
+    title: 'Architecture First',
+    description: 'Every system is designed with robust architecture for maximum scalability and performance.',
   },
   {
     icon: Zap,
     title: 'Rapid Execution',
-    description: 'Agile workflows that deliver results fast without compromising quality.',
+    description: 'Agile development cycles that deliver fully functional software without compromising quality.',
   },
   {
     icon: BarChart3,
-    title: 'Measurable Growth',
-    description: 'Transparent reporting and KPI tracking so you always know your ROI.',
+    title: 'Automated Workflows',
+    description: 'Replace manual tasks with intelligent AI agents and seamless data integrations.',
   },
   {
     icon: Lightbulb,
-    title: 'Creative Excellence',
-    description: 'Award-winning creative that sets your brand apart from the competition.',
+    title: 'Code Quality',
+    description: 'Clean, maintainable, and modern codebases that future-proof your digital product.',
   },
 ];
 
@@ -68,8 +68,8 @@ export default function About() {
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
               className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#1a2332] leading-tight tracking-tight"
             >
-              We don&apos;t just build brands. We build{' '}
-              <mark>legacies</mark> that last.
+              We don&apos;t just write code. We build{' '}
+              <mark>systems</mark> that scale.
             </motion.h2>
           </div>
 
@@ -82,10 +82,7 @@ export default function About() {
             className="flex items-end"
           >
             <p className="text-[#3d5a47] text-lg md:text-xl leading-relaxed">
-              Founded in 2019, Elevate Digital has helped over 200 brands scale
-              their digital presence and achieve measurable growth. Our team of
-              strategists, designers, developers, and marketers work as one to
-              deliver exceptional results that exceed expectations.
+              Managed solely by the founder of <strong>iknowdata.in</strong>, we specialize in delivering high-performance custom web applications and AI-driven automation. We partner closely with businesses to transform manual bottlenecks into scalable, automated tech solutions.
             </p>
           </motion.div>
         </div>

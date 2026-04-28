@@ -8,23 +8,23 @@ import { ShieldCheck, Target, TrendingUp, Users } from 'lucide-react';
 const solutions = [
   {
     icon: Target,
-    title: 'We make things simple',
-    description: 'No jargon, no overcomplication — just clear steps you can follow to start and grow your business confidently.',
+    title: 'We speak human, not jargon',
+    description: 'No confusing acronyms or bloated tech talk — just clear, plain-English explanations of how the software will solve your actual business problems.',
   },
   {
-    title: 'We focus on real results',
+    title: 'We build for business results',
     icon: TrendingUp,
-    description: 'Every strategy we create is designed to help you launch faster, grow smarter, and increase profits.',
+    description: "We don't build shiny tools just for the sake of it. Every line of code or automation we write is designed to save you time or increase your bottom line.",
   },
   {
-    title: 'We know what works',
+    title: 'We pick the right tools',
     icon: ShieldCheck,
-    description: 'With years of hands-on experience across industries, we bring proven strategies and practical solutions to the table.',
+    description: 'With hands-on experience across modern development and AI, we bypass the hype and select the exact technology that fits your budget and goals.',
   },
   {
-    title: 'With you all the way',
+    title: 'Your dedicated tech partner',
     icon: Users,
-    description: 'From your first idea to scaling your business, we provide ongoing support, not just a one-time plan.',
+    description: 'From the first blueprint to managing the servers long after launch, we handle all the technical heavy lifting so you can focus on running your business.',
   },
 ];
 
@@ -59,7 +59,7 @@ export default function Solutions() {
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             className="text-2xl md:text-4xl font-bold text-white mt-6 mb-6 leading-tight"
           >
-            Removing the roadblocks to your <mark className="text-[#e4fe7b] bg-transparent">success.</mark>
+            Removing the technical roadblocks to your <mark className="text-[#e4fe7b] bg-transparent">growth.</mark>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -67,7 +67,7 @@ export default function Solutions() {
             transition={{ delay: 0.2, duration: 0.7 }}
             className="text-white/70 text-lg"
           >
-            It&apos;s easy to get lost in a sea of advice, conflicting opinions, and endless &apos;must-dos.&apos; We filter out the noise, focus on what truly matters, and give you the kind of clarity that lets your brand shine.
+            It&apos;s easy to get overwhelmed by "AI integrations," "cloud servers," and confusing software agency pitches. We filter out the tech jargon, focus entirely on what your business actually needs, and build systems that just work.
           </motion.p>
         </div>
 

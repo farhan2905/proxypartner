@@ -6,30 +6,30 @@ import SectionTag from '@/components/shared/SectionTag';
 
 const categories = [
   {
-    title: 'Strategy & Brand',
+    title: 'Website & Apps',
     questions: [
-      'What risks should I prepare for?',
-      'How do I build a strong brand?',
-      'Which marketing channels should I focus on first?',
-      'How do I stand out from competitors?',
+      "What kind of website does my business actually need?",
+      "How long does it take to build a custom website or app?",
+      "Do I need a simple webpage, or a full custom application?",
+      "What features are actually important for my customers?",
     ],
   },
   {
-    title: 'Growth & Revenue',
+    title: 'AI & Automation',
     questions: [
-      "What's the best way to price my services?",
-      'How do I scale without losing quality?',
-      'Who is my ideal customer?',
-      'How do I know if my strategy will work?',
+      "Everyone is talking about AI, but how does it help ME?",
+      "Can software really do the boring tasks my team hates?",
+      "Will this 'automation' thing be too complicated for us to use?",
+      "Does adding AI mean I have to rebuild my whole business?",
     ],
   },
   {
-    title: 'Tech & Operations',
+    title: 'Cost & Management',
     questions: [
-      'Do I need AI for my business?',
-      'How do I build a website that converts?',
-      'What technology stack should I use?',
-      'How do I automate repetitive tasks?',
+      "How much is all of this tech actually going to cost me?",
+      "Who manages the website and software after it's built?",
+      "What if something breaks—how do we get it fixed?",
+      "Do I need to hire my own IT guy to run this?",
     ],
   },
 ];

@@ -15,91 +15,61 @@ import SectionTag from '@/components/shared/SectionTag';
 
 const services = [
   {
-    icon: Megaphone,
-    number: '01',
-    title: 'Digital Marketing',
-    description:
-      'Amplify your brand presence with targeted campaigns across every digital channel. We craft data-driven strategies that turn clicks into customers and impressions into revenue.',
-    subservices: [
-      'Search Engine Optimization',
-      'Pay-Per-Click Advertising',
-      'Social Media Marketing',
-      'Content Marketing',
-    ],
-    gradient: 'from-[#e4fe7b]/40 to-[#e4fe7b]/5',
-    color: '#e4fe7b',
-  },
-  {
-    icon: TrendingUp,
-    number: '02',
-    title: 'Growth Strategy',
-    description:
-      'Unlock exponential growth with proven frameworks and innovative tactics. We identify bottlenecks, optimize funnels, and create sustainable growth engines for your business.',
-    subservices: [
-      'Growth Hacking',
-      'Conversion Optimization',
-      'A/B Testing',
-      'User Acquisition',
-    ],
-    gradient: 'from-[#e83043]/40 to-[#e83043]/5',
-    color: '#e83043',
-  },
-  {
     icon: Code2,
-    number: '03',
-    title: 'Web Development',
+    number: '01',
+    title: 'Software Development',
     description:
-      'Build fast, scalable, and beautiful web experiences that users love. From landing pages to enterprise platforms, we deliver code that performs as good as it looks.',
+      'Build fast, scalable, and custom web applications that solve your precise business bottlenecks. We deliver clean, maintainable code engineered for high performance.',
     subservices: [
-      'Full-Stack Development',
-      'E-Commerce Solutions',
-      'CMS Integration',
-      'API Development',
+      'Custom Web Applications',
+      'API Integration',
+      'Legacy System Modernization',
+      'E-Commerce & Portals',
     ],
     gradient: 'from-blue-500/40 to-blue-500/5',
     color: '#3b82f6',
   },
   {
     icon: BrainCircuit,
-    number: '04',
-    title: 'AI Solutions',
+    number: '02',
+    title: 'AI Automation Solution',
     description:
-      'Harness the power of artificial intelligence to automate, predict, and innovate. We integrate cutting-edge AI tools into your workflows for smarter business outcomes.',
+      'Replace manual data entry and repetitive workflows with intelligent AI agents. We build custom software solutions that operate 24/7 without fatiguing.',
     subservices: [
-      'AI Chatbots & Assistants',
-      'Machine Learning Models',
-      'Predictive Analytics',
-      'NLP Systems',
+      'Workflow Automation',
+      'Custom AI Agents',
+      'Data Processing Pipelines',
+      'Automated Support',
     ],
-    gradient: 'from-purple-500/40 to-purple-500/5',
-    color: '#a855f7',
+    gradient: 'from-[#e4fe7b]/40 to-[#e4fe7b]/5',
+    color: '#e4fe7b',
   },
   {
-    icon: Palette,
-    number: '05',
-    title: 'Brand Identity',
+    icon: TrendingUp,
+    number: '03',
+    title: 'AI Consultancy',
     description:
-      'Create a brand that resonates, inspires, and endures. We design visual identities that capture your essence and connect emotionally with your audience.',
+      'Not sure how AI fits into your business model? We map out exactly where technology can save you time, cut costs, and unlock new revenue entirely risk-free.',
     subservices: [
-      'Logo Design',
-      'Brand Guidelines',
-      'Visual Systems',
-      'Brand Strategy',
+      'Tech Stack Audits',
+      'AI Feasibility Studies',
+      'Digital Transformation Mapping',
+      'Strategic Implementation',
     ],
-    gradient: 'from-orange-500/40 to-orange-500/5',
-    color: '#f97316',
+    gradient: 'from-[#e83043]/40 to-[#e83043]/5',
+    color: '#e83043',
   },
   {
     icon: Server,
-    number: '06',
+    number: '04',
     title: 'IT Services',
     description:
-      'Keep your technology running smoothly and securely. We provide comprehensive IT solutions that let you focus on what you do best — growing your business.',
+      'Keep your custom infrastructure secure and running smoothly. From cloud deployment to ongoing server maintenance, we protect and manage your tech investment.',
     subservices: [
-      'IT Consulting',
-      'Cybersecurity',
-      'Cloud Solutions',
-      'Managed Services',
+      'Cloud Architecture',
+      'System Maintenance',
+      'Performance Monitoring',
+      'Technical Support',
     ],
     gradient: 'from-teal-500/40 to-teal-500/5',
     color: '#14b8a6',
@@ -118,7 +88,7 @@ function WheelNode({
   wheelRotation: any, 
   isActive: boolean 
 }) {
-  const angle = index * 60; // 360 / 6
+  const angle = index * 90; // 360 / 4
   
   // Counter rotate so the icon stays upright
   const itemRotation = useTransform(wheelRotation, (r: number) => -(r + angle));
@@ -152,13 +122,13 @@ export default function Services() {
     offset: ['start start', 'end end'],
   });
 
-  // Map scroll progress to wheel rotation: 0 -> -300 degrees
-  const wheelRotation = useTransform(scrollYProgress, [0, 1], [0, -300]);
+  // Map scroll progress to wheel rotation: 0 -> -270 degrees (3 intervals of 90 degrees)
+  const wheelRotation = useTransform(scrollYProgress, [0, 1], [0, -270]);
 
   useMotionValueEvent(scrollYProgress, 'change', (latest) => {
-    // 6 items -> 5 intervals.
-    let index = Math.round(latest * 5);
-    index = Math.max(0, Math.min(5, index));
+    // 4 items -> 3 intervals.
+    let index = Math.round(latest * 3);
+    index = Math.max(0, Math.min(3, index));
     if (index !== activeIndex) {
       setActiveIndex(index);
     }
@@ -167,7 +137,7 @@ export default function Services() {
   const activeService = services[activeIndex];
 
   return (
-    <section id="services" ref={containerRef} className="relative h-[420vh] bg-[#161e28]">
+    <section id="services" ref={containerRef} className="relative h-[300vh] bg-[#161e28]">
       {/* Sticky visible area */}
       <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col items-start pt-24 md:pt-32">
         
@@ -184,13 +154,16 @@ export default function Services() {
         </div>
 
         {/* Section Header */}
-        <div className="relative z-10 text-left px-6 mb-12 w-full max-w-4xl mx-auto">
+        <div className="relative z-10 text-left px-6 mb-8 w-full max-w-4xl mx-auto">
           <SectionTag text="OUR SERVICES" variant="dark" />
-          <h2 className="text-2xl md:text-4xl font-bold text-white leading-tight tracking-tight mt-6 mb-4">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight tracking-tight mt-6 mb-4">
             Services that drive <mark>growth</mark>
           </h2>
-          <p className="text-white/70 text-lg max-w-2xl">
-            No running around for different experts. We handle it all.
+          <p className="text-white/70 text-lg md:text-xl max-w-2xl mb-4">
+            No running around for different experts. We handle it all. From custom software to AI automation, we build the systems that scale your business.
+          </p>
+          <p className="text-white/50 text-base md:text-lg max-w-2xl">
+            Our specialized teams work seamlessly together to deliver end-to-end solutions. Scroll down to explore our core focus areas.
           </p>
         </div>
 

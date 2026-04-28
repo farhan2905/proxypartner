@@ -1,18 +1,18 @@
 'use client';
 
 const marqueeItems = [
-  'Digital Marketing',
-  'Growth Strategy',
-  'AI Solutions',
-  'Web Development',
-  'Brand Identity',
-  'Data Analytics',
-  'Creative Design',
-  'Performance Marketing',
-  'SEO Optimization',
-  'Social Media',
-  'Content Strategy',
-  'E-Commerce',
+  'React & Next.js',
+  'Python & Django',
+  'Node.js Architecture',
+  'AI Agents',
+  'LLM Integration',
+  'Cloud Infrastructure',
+  'PostgreSQL & Redis',
+  'API Development',
+  'Docker & CI/CD',
+  'Figma to Code',
+  'Tailwind & Framer',
+  'Serverless Scaling',
 ];
 
 export default function Marquee() {
