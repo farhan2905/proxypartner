@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "iknowdata" }],
   icons: {
-    icon: "",
+    icon: "/favicon.ico",
   },
   openGraph: {
     title: "iknowdata | AI Automation & Software Development",

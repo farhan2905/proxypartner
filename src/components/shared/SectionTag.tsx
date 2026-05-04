@@ -20,11 +20,11 @@ export default function SectionTag({ text, variant = 'light', className }: Secti
       transition={{ duration: 0.5 }}
       className={cn('flex items-center gap-3 mb-6', className)}
     >
-      <span className="w-3 h-3 bg-[#e4fe7b] rounded-sm flex-shrink-0" />
+      <span className="w-3 h-3 bg-emerald-500 rounded-sm flex-shrink-0" />
       <span
         className={cn(
           'text-xs font-mono uppercase tracking-[0.15em] font-medium',
-          isLight ? 'text-[#3d5a47]' : 'text-white/55'
+          isLight ? 'text-foreground/60' : 'text-foreground/55'
         )}
       >
         {text}
@@ -32,7 +32,7 @@ export default function SectionTag({ text, variant = 'light', className }: Secti
       <span
         className={cn(
           'h-px flex-grow max-w-[60px]',
-          isLight ? 'bg-[#3d5a47]/30' : 'bg-white/25'
+          isLight ? 'bg-foreground/30' : 'bg-foreground/25'
         )}
       />
     </motion.div>

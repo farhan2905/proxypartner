@@ -26,8 +26,8 @@ const services = [
       'Legacy System Modernization',
       'E-Commerce & Portals',
     ],
-    gradient: 'from-blue-500/40 to-blue-500/5',
-    color: '#3b82f6',
+    gradient: 'from-emerald-400/30 to-emerald-200/10',
+    color: '#059669', // emerald-600
   },
   {
     icon: BrainCircuit,
@@ -41,8 +41,8 @@ const services = [
       'Data Processing Pipelines',
       'Automated Support',
     ],
-    gradient: 'from-[#e4fe7b]/40 to-[#e4fe7b]/5',
-    color: '#e4fe7b',
+    gradient: 'from-teal-400/30 to-teal-200/10',
+    color: '#0d9488', // teal-600
   },
   {
     icon: TrendingUp,
@@ -56,8 +56,8 @@ const services = [
       'Digital Transformation Mapping',
       'Strategic Implementation',
     ],
-    gradient: 'from-[#e83043]/40 to-[#e83043]/5',
-    color: '#e83043',
+    gradient: 'from-green-400/30 to-green-200/10',
+    color: '#16a34a', // green-600
   },
   {
     icon: Server,
@@ -71,8 +71,8 @@ const services = [
       'Performance Monitoring',
       'Technical Support',
     ],
-    gradient: 'from-teal-500/40 to-teal-500/5',
-    color: '#14b8a6',
+    gradient: 'from-lime-400/30 to-lime-200/10',
+    color: '#65a30d', // lime-600
   },
 ];
 
@@ -103,11 +103,12 @@ function WheelNode({
         style={{ rotate: itemRotation }}
         className={`w-20 h-20 rounded-full flex items-center justify-center transition-all duration-500 ${
           isActive 
-            ? 'glass-panel shadow-[0_0_30px_rgba(228,254,123,0.3)] scale-110 border-[#e4fe7b]/50' 
-            : 'glass border-white/10 scale-90 opacity-40'
+            ? 'glass-panel shadow-[0_8px_32px_rgba(0,0,0,0.15)] scale-110 border-2' 
+            : 'glass-panel border-foreground/10 scale-90 opacity-60'
         }`}
+        style={isActive ? { rotate: itemRotation, borderColor: service.color } : { rotate: itemRotation }}
       >
-        <Icon className={`w-8 h-8 transition-colors duration-500 ${isActive ? 'text-[#e4fe7b]' : 'text-white'}`} />
+        <Icon className={`w-8 h-8 transition-colors duration-500`} style={{ color: isActive ? service.color : '#64748b' }} />
       </motion.div>
     </div>
   );
@@ -137,7 +138,7 @@ export default function Services() {
   const activeService = services[activeIndex];
 
   return (
-    <section id="services" ref={containerRef} className="relative h-[300vh] bg-[#161e28]">
+    <section id="services" ref={containerRef} className="relative h-[300vh] bg-transparent">
       {/* Sticky visible area */}
       <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col items-start pt-24 md:pt-32">
         
@@ -154,34 +155,36 @@ export default function Services() {
         </div>
 
         {/* Section Header */}
-        <div className="relative z-10 text-left px-6 mb-8 w-full max-w-4xl mx-auto">
-          <SectionTag text="OUR SERVICES" variant="dark" />
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight tracking-tight mt-6 mb-4">
-            Services that drive <mark>growth</mark>
-          </h2>
-          <p className="text-white/70 text-lg md:text-xl max-w-2xl mb-4">
-            No running around for different experts. We handle it all. From custom software to AI automation, we build the systems that scale your business.
-          </p>
-          <p className="text-white/50 text-base md:text-lg max-w-2xl">
-            Our specialized teams work seamlessly together to deliver end-to-end solutions. Scroll down to explore our core focus areas.
-          </p>
+        <div className="relative z-10 text-left px-6 mb-8 w-[92vw] max-w-[1600px] mx-auto px-4 md:px-8 lg:px-12 flex-shrink-0">
+          <div className="max-w-4xl">
+            <SectionTag text="OUR SERVICES" variant="dark" />
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-foreground to-foreground/70 leading-tight tracking-tight mt-6 mb-4 drop-shadow-sm">
+              Services that drive <span className="text-gradient-accent drop-shadow-sm">growth</span>
+            </h2>
+            <p className="text-foreground/80 text-lg md:text-xl max-w-2xl mb-4">
+              No running around for different experts. We handle it all. From custom software to AI automation, we build the systems that scale your business.
+            </p>
+            <p className="text-foreground/60 text-base md:text-lg max-w-2xl">
+              Our specialized teams work seamlessly together to deliver end-to-end solutions. Scroll down to explore our core focus areas.
+            </p>
+          </div>
         </div>
 
         {/* The Wheel */}
-        {/* The wheel has a radius of 600px. We place it so the top touches near the header. */}
+        {/* We place it so the top touches near the header. */}
         <motion.div
-          className="absolute left-1/2 rounded-full border border-white/5 z-0"
+          className="absolute left-1/2 rounded-full border border-foreground/5 z-0"
           style={{
-            width: '75rem',
-            height: '75rem',
-            top: '30vh',
+            width: '90rem',
+            height: '90rem',
+            top: '32vh',
             x: '-50%',
             rotate: wheelRotation,
           }}
         >
           {/* Wheel inner circles for aesthetics */}
-          <div className="absolute inset-[100px] rounded-full border border-white/8 border-dashed opacity-50" />
-          <div className="absolute inset-[200px] rounded-full border border-white/[0.02]" />
+          <div className="absolute inset-[100px] rounded-full border border-foreground/5 border-dashed opacity-50" />
+          <div className="absolute inset-[200px] rounded-full border border-foreground/[0.02]" />
           
           {services.map((service, i) => (
             <WheelNode 
@@ -212,19 +215,19 @@ export default function Services() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 relative z-10">
                 {/* Left: Info */}
                 <div>
-                  <span className="inline-flex items-center gap-2 bg-[#e4fe7b]/10 text-[#e4fe7b] border border-[#e4fe7b]/20 text-sm font-mono font-bold px-3 py-1 rounded-full mb-6">
+                  <span className="inline-flex items-center gap-2 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-sm font-mono font-bold px-3 py-1 rounded-full mb-6">
                     {activeService.number}
                   </span>
-                  <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                  <h3 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-foreground to-foreground/70 mb-4">
                     {activeService.title}
                   </h3>
-                  <p className="text-white/70 text-base leading-relaxed mb-8">
+                  <p className="text-foreground/80 text-base leading-relaxed mb-8">
                     {activeService.description}
                   </p>
                   
                   <motion.button
                     whileHover={{ gap: '12px' }}
-                    className="inline-flex items-center gap-2 text-[#e4fe7b] text-sm font-semibold group bg-white/5 hover:bg-white/10 px-6 py-3 rounded-full border border-white/10 transition-colors"
+                    className="inline-flex items-center gap-2 text-emerald-400 text-sm font-semibold group bg-foreground/5 hover:bg-foreground/10 px-6 py-3 rounded-full border border-foreground/5 transition-colors"
                   >
                     Explore {activeService.title}
                     <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -233,7 +236,7 @@ export default function Services() {
 
                 {/* Right: Subservices */}
                 <div className="flex flex-col justify-center">
-                  <p className="text-white/30 text-xs font-mono uppercase tracking-widest mb-6">
+                  <p className="text-foreground/40 text-xs font-mono uppercase tracking-widest mb-6">
                     What we offer
                   </p>
                   <div className="space-y-4">
@@ -245,12 +248,12 @@ export default function Services() {
                         transition={{ delay: i * 0.1, duration: 0.4 }}
                         className="flex items-center gap-4 group"
                       >
-                        <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-[#e4fe7b]/40 transition-colors">
-                           <span className="text-white/40 text-[10px] font-mono group-hover:text-[#e4fe7b] transition-colors">
+                        <div className="w-8 h-8 rounded-full bg-foreground/5 flex items-center justify-center border border-foreground/5 group-hover:border-emerald-500/40 transition-colors">
+                           <span className="text-foreground/40 text-[10px] font-mono group-hover:text-emerald-400 transition-colors">
                              0{i+1}
                            </span>
                         </div>
-                        <span className="text-white/80 text-sm md:text-base group-hover:text-white transition-colors">
+                        <span className="text-foreground/80 text-sm md:text-base group-hover:text-foreground transition-colors">
                           {sub}
                         </span>
                       </motion.div>

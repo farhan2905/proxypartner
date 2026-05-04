@@ -52,8 +52,8 @@ export default function Challenges() {
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <section ref={ref} className="bg-[#f5f7f2] py-16 md:py-24" id="challenges">
-      <div className="max-w-7xl mx-auto px-6">
+    <section ref={ref} className="bg-transparent py-16 md:py-24" id="challenges">
+      <div className="w-[92vw] max-w-[1600px] mx-auto px-4 md:px-8 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
           
           {/* Left Column - Heading */}
@@ -64,15 +64,15 @@ export default function Challenges() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                 transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                className="text-3xl md:text-4xl font-bold text-[#1a2332] leading-tight tracking-tight mt-6 mb-6"
+                className="text-3xl md:text-4xl font-bold text-foreground leading-tight tracking-tight mt-6 mb-6"
               >
-                Questions we hear <mark className="bg-[#e4fe7b] px-2 rounded-lg">every day.</mark>
+                Questions we hear <span className="bg-emerald-500 text-background px-2 rounded-lg">every day.</span>
               </motion.h2>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ delay: 0.2, duration: 0.7 }}
-                className="text-[#3d5a47] text-lg leading-relaxed max-w-md"
+                className="text-foreground/80 text-lg leading-relaxed max-w-md"
               >
                 Every business faces hurdles. Here are the questions our clients bring to us — and the clarity we provide to help them scale without the guesswork.
               </motion.p>
@@ -89,18 +89,18 @@ export default function Challenges() {
                   variants={itemVariants}
                   initial="hidden"
                   animate={isInView ? "visible" : "hidden"}
-                  className="border-t border-[#1a2332]/10 pt-8"
+                  className="border-t border-foreground/10 pt-8"
                 >
-                  <h3 className="text-2xl font-bold text-[#1a2332] mb-6">
+                  <h3 className="text-2xl font-bold text-foreground mb-6">
                     {category.title}
                   </h3>
                   <ul className="space-y-4">
                     {category.questions.map((question, qIdx) => (
                       <li key={qIdx} className="flex items-start gap-4 group cursor-default">
-                        <span className="font-mono text-sm text-[#3d5a47]/50 mt-1.5 transition-colors group-hover:text-[#e4fe7b]">
+                        <span className="font-mono text-sm text-foreground/50 mt-1.5 transition-colors group-hover:text-emerald-400">
                           Q{String(qIdx + 1 + (catIdx * 4)).padStart(2, '0')}
                         </span>
-                        <p className="text-lg text-[#3d5a47] group-hover:text-[#1a2332] transition-colors">
+                        <p className="text-lg text-foreground/80 group-hover:text-foreground transition-colors">
                           {question}
                         </p>
                       </li>

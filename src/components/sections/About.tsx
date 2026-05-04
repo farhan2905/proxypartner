@@ -54,9 +54,9 @@ export default function About() {
     <section
       id="about"
       ref={ref}
-      className="relative bg-[#f0f5e8] py-16 md:py-24 overflow-hidden"
+      className="relative bg-transparent py-16 md:py-24 overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="w-[92vw] max-w-[1600px] mx-auto px-4 md:px-8 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-16 md:mb-20">
           {/* Left: Heading */}
           <div>
@@ -66,10 +66,10 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-              className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#1a2332] leading-tight tracking-tight"
+              className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight tracking-tight"
             >
               We don&apos;t just write code. We build{' '}
-              <mark>systems</mark> that scale.
+              <span className="bg-emerald-500 text-background px-2 rounded-lg">systems</span> that scale.
             </motion.h2>
           </div>
 
@@ -81,7 +81,7 @@ export default function About() {
             transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
             className="flex items-end"
           >
-            <p className="text-[#3d5a47] text-lg md:text-xl leading-relaxed">
+            <p className="text-foreground/80 text-lg md:text-xl leading-relaxed">
               Managed solely by the founder of <strong>iknowdata.in</strong>, we specialize in delivering high-performance custom web applications and AI-driven automation. We partner closely with businesses to transform manual bottlenecks into scalable, automated tech solutions.
             </p>
           </motion.div>
@@ -98,15 +98,15 @@ export default function About() {
                 variants={cardVariants}
                 initial="hidden"
                 animate={isInView ? 'visible' : 'hidden'}
-                className="bg-white rounded-2xl p-5 md:p-6 group hover:shadow-xl hover:shadow-[#e4fe7b]/10 transition-all duration-500 hover:-translate-y-1"
+                className="glass-card rounded-2xl p-5 md:p-6 group hover:shadow-xl hover:shadow-emerald-500/10 transition-all duration-500 hover:-translate-y-1"
               >
-                <div className="w-12 h-12 rounded-xl bg-[#e4fe7b]/20 flex items-center justify-center mb-5 group-hover:bg-[#e4fe7b]/40 transition-colors">
-                  <Icon className="w-6 h-6 text-[#1a2332]" />
+                <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center mb-5 group-hover:bg-emerald-500/20 transition-colors border border-emerald-500/20">
+                  <Icon className="w-6 h-6 text-emerald-400" />
                 </div>
-                <h3 className="text-[#1a2332] font-bold text-lg mb-3">
+                <h3 className="text-foreground font-bold text-lg mb-3">
                   {benefit.title}
                 </h3>
-                <p className="text-[#3d5a47] text-sm leading-relaxed">
+                <p className="text-foreground/80 text-sm leading-relaxed">
                   {benefit.description}
                 </p>
               </motion.div>

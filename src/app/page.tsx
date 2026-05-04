@@ -16,7 +16,7 @@ import Footer from '@/components/sections/Footer';
 
 export default function Home() {
   return (
-    <main className="bg-[#161e28] overflow-x-clip">
+    <main className="bg-background overflow-x-clip text-foreground">
       <Navigation />
       <Hero />
       <Marquee />

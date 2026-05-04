@@ -11,7 +11,7 @@ const testimonials = [
     name: 'Sarah Chen',
     role: 'CEO, TechFlow Inc.',
     initials: 'SC',
-    color: 'bg-[#e4fe7b]/20 text-[#1a2332]',
+    color: 'bg-emerald-500/20 text-emerald-400',
   },
   {
     quote:
@@ -19,7 +19,7 @@ const testimonials = [
     name: 'Marcus Rodriguez',
     role: 'Founder, GreenLeaf Co.',
     initials: 'MR',
-    color: 'bg-[#e83043]/15 text-[#e83043]',
+    color: 'bg-teal-500/15 text-teal-400',
   },
   {
     quote:
@@ -27,7 +27,7 @@ const testimonials = [
     name: 'Emily Watson',
     role: 'VP of Operations, DataSphere',
     initials: 'EW',
-    color: 'bg-purple-500/15 text-purple-400',
+    color: 'bg-green-500/15 text-green-400',
   },
 ];
 
@@ -49,8 +49,8 @@ export default function Testimonials() {
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <section ref={ref} className="relative bg-[#f0f5e8] py-24 md:py-32 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6">
+    <section ref={ref} className="relative bg-transparent py-24 md:py-32 overflow-hidden">
+      <div className="w-[92vw] max-w-[1600px] mx-auto px-4 md:px-8 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -58,11 +58,11 @@ export default function Testimonials() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <p className="font-mono text-[#3d5a47] text-xs uppercase tracking-[0.2em] mb-4">
+          <p className="font-mono text-foreground/80 text-xs uppercase tracking-[0.2em] mb-4">
             Client Stories
           </p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#1a2332] tracking-tight">
-            Loved by <mark>leaders</mark> worldwide
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground tracking-tight">
+            Loved by <span className="bg-emerald-500 text-background px-2 rounded-lg">leaders</span> worldwide
           </h2>
         </motion.div>
 
@@ -74,28 +74,28 @@ export default function Testimonials() {
               variants={cardVariants}
               initial="hidden"
               animate={isInView ? 'visible' : 'hidden'}
-              className="bg-white rounded-2xl p-8 hover:shadow-xl hover:shadow-[#e4fe7b]/10 transition-all duration-500 hover:-translate-y-1 flex flex-col"
+              className="glass-card rounded-2xl p-8 hover:shadow-xl hover:shadow-emerald-500/10 transition-all duration-500 hover:-translate-y-1 flex flex-col"
             >
               {/* Quote icon */}
-              <Quote className="w-8 h-8 text-[#e4fe7b] mb-6 flex-shrink-0" />
+              <Quote className="w-8 h-8 text-emerald-500 mb-6 flex-shrink-0" />
 
               {/* Quote text */}
-              <p className="text-[#1a2332] text-base leading-relaxed mb-8 flex-grow">
+              <p className="text-foreground text-base leading-relaxed mb-8 flex-grow">
                 &ldquo;{testimonial.quote}&rdquo;
               </p>
 
               {/* Author */}
-              <div className="flex items-center gap-4 pt-6 border-t border-[#1a2332]/5">
+              <div className="flex items-center gap-4 pt-6 border-t border-foreground/5">
                 <div
                   className={`w-11 h-11 rounded-full ${testimonial.color} flex items-center justify-center text-sm font-bold flex-shrink-0`}
                 >
                   {testimonial.initials}
                 </div>
                 <div>
-                  <p className="text-[#1a2332] font-semibold text-sm">
+                  <p className="text-foreground font-semibold text-sm">
                     {testimonial.name}
                   </p>
-                  <p className="text-[#3d5a47] text-xs">{testimonial.role}</p>
+                  <p className="text-foreground/80 text-xs">{testimonial.role}</p>
                 </div>
               </div>
             </motion.div>
