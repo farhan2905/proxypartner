@@ -66,7 +66,7 @@ export default function Challenges() {
                 transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
                 className="text-3xl md:text-4xl font-bold text-foreground leading-tight tracking-tight mt-6 mb-6"
               >
-                Questions we hear <span className="bg-emerald-500 text-background px-2 rounded-lg">every day.</span>
+                Questions we hear <span className="bg-indigo-500 text-white px-2 rounded-lg">every day.</span>
               </motion.h2>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
@@ -97,7 +97,7 @@ export default function Challenges() {
                   <ul className="space-y-4">
                     {category.questions.map((question, qIdx) => (
                       <li key={qIdx} className="flex items-start gap-4 group cursor-default">
-                        <span className="font-mono text-sm text-foreground/50 mt-1.5 transition-colors group-hover:text-emerald-400">
+                        <span className="font-mono text-sm text-foreground/50 mt-1.5 transition-colors group-hover:text-indigo-500">
                           Q{String(qIdx + 1 + (catIdx * 4)).padStart(2, '0')}
                         </span>
                         <p className="text-lg text-foreground/80 group-hover:text-foreground transition-colors">

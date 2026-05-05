@@ -34,14 +34,14 @@ const benefits = [
 ];
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 40 },
+  hidden: { opacity: 0, x: -300 },
   visible: (i: number) => ({
     opacity: 1,
-    y: 0,
+    x: 0,
     transition: {
-      delay: i * 0.12,
-      duration: 0.6,
-      ease: [0.22, 1, 0.36, 1],
+      delay: i * 0.2,
+      duration: 1.2,
+      ease: [0.16, 1, 0.3, 1],
     },
   }),
 };
@@ -56,7 +56,11 @@ export default function About() {
       ref={ref}
       className="relative bg-transparent py-16 md:py-24 overflow-hidden"
     >
-      <div className="w-[92vw] max-w-[1600px] mx-auto px-4 md:px-8 lg:px-12">
+      {/* Dynamic Background Gradients */}
+      <div className="absolute top-0 right-[-10%] w-[500px] h-[500px] bg-indigo-200/50 rounded-full blur-[120px] pointer-events-none animate-orb-2" />
+      <div className="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] bg-violet-200/40 rounded-full blur-[120px] pointer-events-none animate-orb-3" />
+      
+      <div className="w-[92vw] max-w-[1600px] mx-auto px-4 md:px-8 lg:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-16 md:mb-20">
           {/* Left: Heading */}
           <div>
@@ -69,7 +73,7 @@ export default function About() {
               className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight tracking-tight"
             >
               We don&apos;t just write code. We build{' '}
-              <span className="bg-emerald-500 text-background px-2 rounded-lg">systems</span> that scale.
+              <span className="bg-indigo-500 text-white px-2 rounded-lg">systems</span> that scale.
             </motion.h2>
           </div>
 
@@ -82,7 +86,7 @@ export default function About() {
             className="flex items-end"
           >
             <p className="text-foreground/80 text-lg md:text-xl leading-relaxed">
-              Managed solely by the founder of <strong>iknowdata.in</strong>, we specialize in delivering high-performance custom web applications and AI-driven automation. We partner closely with businesses to transform manual bottlenecks into scalable, automated tech solutions.
+              Managed solely by the founder of <strong>Cognisa</strong>, we specialize in delivering high-performance custom web applications and AI-driven automation. We partner closely with businesses to transform manual bottlenecks into scalable, automated tech solutions.
             </p>
           </motion.div>
         </div>
@@ -98,17 +102,25 @@ export default function About() {
                 variants={cardVariants}
                 initial="hidden"
                 animate={isInView ? 'visible' : 'hidden'}
-                className="glass-card rounded-2xl p-5 md:p-6 group hover:shadow-xl hover:shadow-emerald-500/10 transition-all duration-500 hover:-translate-y-1"
+                className="relative overflow-hidden bg-white/20 backdrop-blur-2xl p-6 md:p-8 min-h-[280px] md:min-h-[320px] flex flex-col justify-between rounded-[2rem] border border-white/60 hover:border-white/90 shadow-[inset_0_1px_1px_rgba(255,255,255,0.8),0_12px_40px_rgba(31,38,135,0.07)] transition-all duration-700 group hover:-translate-y-2 hover:bg-white/30 hover:shadow-[inset_0_1px_1px_rgba(255,255,255,1),0_20px_50px_rgba(99,102,241,0.15)]"
               >
-                <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center mb-5 group-hover:bg-emerald-500/20 transition-colors border border-emerald-500/20">
-                  <Icon className="w-6 h-6 text-emerald-400" />
+                {/* Subtle light sweep & glow on hover */}
+                <div className="absolute top-0 left-[-100%] w-[50%] h-[200%] bg-gradient-to-r from-transparent via-white/50 to-transparent rotate-[30deg] opacity-0 group-hover:opacity-100 group-hover:left-[200%] transition-all duration-1000 pointer-events-none" />
+                
+                {/* Content */}
+                <div className="relative z-10 flex flex-col h-full">
+                  <div className="w-14 h-14 rounded-2xl bg-white/60 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-indigo-500/10 transition-all duration-500 border border-white/80 shadow-[inset_0_1px_2px_rgba(255,255,255,1),0_4px_12px_rgba(0,0,0,0.05)]">
+                    <Icon className="w-6 h-6 text-indigo-500 transition-colors drop-shadow-sm" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl md:text-2xl font-bold text-foreground mb-3 transition-colors tracking-tight leading-tight">
+                      {benefit.title}
+                    </h3>
+                    <p className="text-foreground/75 text-base md:text-lg leading-relaxed font-medium">
+                      {benefit.description}
+                    </p>
+                  </div>
                 </div>
-                <h3 className="text-foreground font-bold text-lg mb-3">
-                  {benefit.title}
-                </h3>
-                <p className="text-foreground/80 text-sm leading-relaxed">
-                  {benefit.description}
-                </p>
               </motion.div>
             );
           })}

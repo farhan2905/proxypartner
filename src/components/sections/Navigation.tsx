@@ -54,7 +54,7 @@ export default function Navigation() {
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
           >
-            iknowdata<span className="text-emerald-500">.in</span>
+            Cognisa<span className="text-indigo-500">.</span>
           </a>
 
           {/* Desktop Nav Links */}
@@ -67,7 +67,7 @@ export default function Navigation() {
                   e.preventDefault();
                   handleNavClick(link.href);
                 }}
-                className="nav-link text-foreground/80 hover:text-emerald-400 text-sm font-medium transition-colors"
+                className="nav-link text-foreground/80 hover:text-indigo-500 text-sm font-medium transition-colors"
               >
                 {link.label}
               </a>
@@ -82,7 +82,7 @@ export default function Navigation() {
                 e.preventDefault();
                 handleNavClick('#cta');
               }}
-              className="inline-flex items-center gap-2 bg-emerald-500 text-background px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-emerald-400 transition-colors shadow-[0_4px_14px_rgba(16,185,129,0.39)]"
+              className="inline-flex items-center gap-2 bg-indigo-500 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-indigo-600 transition-colors shadow-[0_4px_14px_rgba(99,102,241,0.35)]"
             >
               Start a Project
               <ArrowUpRight className="w-4 h-4" />
@@ -122,7 +122,7 @@ export default function Navigation() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 20 }}
                 transition={{ delay: i * 0.08, duration: 0.4 }}
-                className="text-foreground text-3xl font-bold tracking-tight hover:text-emerald-400 transition-colors"
+                className="text-foreground text-3xl font-bold tracking-tight hover:text-indigo-500 transition-colors"
               >
                 {link.label}
               </motion.a>
@@ -137,7 +137,7 @@ export default function Navigation() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 20 }}
               transition={{ delay: navLinks.length * 0.08, duration: 0.4 }}
-              className="inline-flex items-center gap-2 bg-emerald-500 text-background px-8 py-3 rounded-full text-lg font-semibold mt-4 shadow-[0_4px_14px_rgba(16,185,129,0.39)]"
+              className="inline-flex items-center gap-2 bg-indigo-500 text-white px-8 py-3 rounded-full text-lg font-semibold mt-4 shadow-[0_4px_14px_rgba(99,102,241,0.35)]"
             >
               Start a Project
               <ArrowUpRight className="w-5 h-5" />

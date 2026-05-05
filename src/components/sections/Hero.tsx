@@ -42,33 +42,7 @@ const fadeUpVariants = {
   },
 };
 
-// Floating glass cards
-const floatingCards = [
-  {
-    icon: Sparkles,
-    text: 'AI Agents',
-    delay: 1.5,
-    top: '10%',
-    left: '10%',
-    color: '#10b981', // Emerald 500
-  },
-  {
-    icon: Zap,
-    text: 'Custom Software',
-    delay: 1.7,
-    top: '45%',
-    right: '-5%',
-    color: '#34d399', // Emerald 400
-  },
-  {
-    icon: Code,
-    text: 'Web Architecture',
-    delay: 1.9,
-    top: '75%',
-    left: '20%',
-    color: '#059669', // Emerald 600
-  },
-];
+
 
 export default function Hero() {
   const heroRef = useRef<HTMLElement>(null);
@@ -91,39 +65,36 @@ export default function Hero() {
   const buttonsOpacity = useTransform(scrollYProgress, [0.06, 0.15], [1, 0]);
 
   return (
-    <section ref={heroRef} className="relative min-h-screen flex items-center bg-transparent overflow-hidden pt-32 pb-24 lg:pt-0 lg:pb-0">
-      {/* Noise overlay */}
-      <div className="noise-overlay absolute inset-0 z-[1]" />
-
-      {/* Decorative gradient orbs */}
-      <div className="absolute top-1/4 left-0 w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-emerald-500 rounded-full blur-[120px] opacity-[0.40] animate-orb-1" />
-      <div className="absolute bottom-1/4 right-0 w-[350px] h-[350px] md:w-[500px] md:h-[500px] bg-teal-500 rounded-full blur-[120px] opacity-[0.35] animate-orb-2" />
+    <section id="hero" ref={heroRef} className="relative min-h-screen flex items-center bg-transparent overflow-hidden pt-32 pb-24 lg:pt-0 lg:pb-0">
+      {/* Decorative gradient orbs — lavender/indigo */}
+      <div className="absolute top-1/4 left-0 w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-indigo-100 rounded-full blur-[120px] opacity-[0.30] animate-orb-1" />
+      <div className="absolute bottom-1/4 right-0 w-[350px] h-[350px] md:w-[500px] md:h-[500px] bg-violet-50 rounded-full blur-[120px] opacity-[0.25] animate-orb-2" />
       
       {/* Grid Pattern */}
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wMyI+PHBhdGggZD0iTTM2IDM0djI2SDI0VjM0SDBWMjRoMjRWMGgxMnYyNGgyNHYxMEgzNnoiLz48L2c+PC9nPjwvc3ZnPg==')] opacity-[0.15] pointer-events-none" />
 
-      {/* Rolling Circle Decoration */}
+      {/* Rolling Circle Decoration — indigo accents */}
       <motion.div
         style={{ rotate: ringRotation, scale: ringScale }}
         className="absolute top-1/2 right-0 md:right-[5%] -translate-y-1/2 w-[350px] h-[350px] md:w-[500px] md:h-[500px] lg:w-[600px] lg:h-[600px] pointer-events-none z-[2]"
       >
         <svg viewBox="0 0 400 400" className="w-full h-full" fill="none">
           {/* Outer ring */}
-          <circle cx="200" cy="200" r="190" stroke="rgba(16,185,129,0.12)" strokeWidth="1" />
+          <circle cx="200" cy="200" r="190" stroke="rgba(99,102,241,0.12)" strokeWidth="1" />
           {/* Dashed ring */}
-          <circle cx="200" cy="200" r="160" stroke="rgba(16,185,129,0.08)" strokeWidth="1" strokeDasharray="8 16" />
+          <circle cx="200" cy="200" r="160" stroke="rgba(99,102,241,0.08)" strokeWidth="1" strokeDasharray="8 16" />
           {/* Inner ring */}
-          <circle cx="200" cy="200" r="130" stroke="rgba(52,211,153,0.08)" strokeWidth="1" />
+          <circle cx="200" cy="200" r="130" stroke="rgba(92,99,120,0.08)" strokeWidth="1" />
           {/* Dot markers on outer ring */}
-          <circle cx="200" cy="10" r="3" fill="rgba(16,185,129,0.4)" />
-          <circle cx="390" cy="200" r="3" fill="rgba(16,185,129,0.3)" />
-          <circle cx="200" cy="390" r="3" fill="rgba(52,211,153,0.3)" />
-          <circle cx="10" cy="200" r="3" fill="rgba(16,185,129,0.3)" />
+          <circle cx="200" cy="10" r="3" fill="rgba(99,102,241,0.4)" />
+          <circle cx="390" cy="200" r="3" fill="rgba(99,102,241,0.3)" />
+          <circle cx="200" cy="390" r="3" fill="rgba(92,99,120,0.3)" />
+          <circle cx="10" cy="200" r="3" fill="rgba(99,102,241,0.3)" />
           {/* Cross lines through center */}
           <line x1="200" y1="70" x2="200" y2="330" stroke="rgba(255,255,255,0.05)" strokeWidth="1" />
           <line x1="70" y1="200" x2="330" y2="200" stroke="rgba(255,255,255,0.05)" strokeWidth="1" />
           {/* Inner decorative ring */}
-          <circle cx="200" cy="200" r="80" stroke="rgba(16,185,129,0.05)" strokeWidth="0.5" strokeDasharray="4 8" />
+          <circle cx="200" cy="200" r="80" stroke="rgba(99,102,241,0.05)" strokeWidth="0.5" strokeDasharray="4 8" />
         </svg>
       </motion.div>
 
@@ -133,8 +104,8 @@ export default function Hero() {
         className="absolute bottom-[15%] left-[8%] md:left-[10%] w-[120px] h-[120px] md:w-[180px] md:h-[180px] pointer-events-none z-[2]"
       >
         <svg viewBox="0 0 200 200" className="w-full h-full" fill="none">
-          <circle cx="100" cy="100" r="90" stroke="rgba(52,211,153,0.1)" strokeWidth="1" />
-          <circle cx="100" cy="100" r="70" stroke="rgba(16,185,129,0.06)" strokeWidth="0.5" strokeDasharray="6 12" />
+          <circle cx="100" cy="100" r="90" stroke="rgba(92,99,120,0.1)" strokeWidth="1" />
+          <circle cx="100" cy="100" r="70" stroke="rgba(99,102,241,0.06)" strokeWidth="0.5" strokeDasharray="6 12" />
         </svg>
       </motion.div>
 
@@ -143,7 +114,7 @@ export default function Hero() {
         className="relative z-20 w-[92vw] max-w-[1600px] mx-auto px-4 md:px-8 lg:px-12 w-full flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20"
       >
         {/* Left Content Area */}
-        <div className="w-full lg:w-1/2 text-left pt-12 lg:pt-0">
+        <div className="hidden lg:block lg:w-1/2 text-left pt-12 lg:pt-0">
           {/* Status Badge */}
           <motion.div
             style={{ opacity: badgeOpacity }}
@@ -152,7 +123,7 @@ export default function Hero() {
             transition={{ delay: 0.2, duration: 0.8 }}
             className="inline-flex items-center gap-3 glass-card px-5 py-2 rounded-full mb-8"
           >
-            <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
+            <div className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse shadow-[0_0_8px_rgba(99,102,241,0.8)]" />
             <span className="text-foreground font-bold text-xs tracking-widest uppercase opacity-80">
               SOFTWARE · DEVELOPMENT · AUTOMATION · AI
             </span>
@@ -211,7 +182,7 @@ export default function Hero() {
                 e.preventDefault();
                 document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="group relative inline-flex items-center justify-center gap-2 bg-emerald-600 text-white px-8 py-4 rounded-full text-base font-semibold hover:bg-emerald-700 transition-all duration-300 hover:gap-3 shadow-[0_4px_14px_rgba(16,185,129,0.4)] hover:shadow-[0_6px_20px_rgba(16,185,129,0.5)] w-full sm:w-auto"
+              className="group relative inline-flex items-center justify-center gap-2 bg-indigo-500 text-white px-8 py-4 rounded-full text-base font-semibold hover:bg-indigo-600 transition-all duration-300 hover:gap-3 shadow-[0_4px_14px_rgba(99,102,241,0.35)] hover:shadow-[0_6px_20px_rgba(99,102,241,0.45)] w-full sm:w-auto"
             >
               Get Started
               <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
@@ -233,24 +204,10 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Right Visual Area (Visible on Desktop) */}
-        <div className="hidden lg:block lg:w-1/2 relative h-[31.25rem] w-full">
-          {/* Floating Glassmorphism Cards */}
-          {floatingCards.map((card, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20, scale: 0.9 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ delay: card.delay, duration: 0.8, ease: "easeOut" }}
-              className="absolute flex items-center gap-3 glass-card px-5 py-3 rounded-2xl z-10 hover:scale-110 transition-all duration-300 cursor-default"
-              style={{ top: card.top, left: card.left, right: card.right }}
-            >
-              <div className="p-2.5 rounded-full bg-background/60 shadow-[inset_0_1px_2px_rgba(255,255,255,0.2),0_2px_8px_rgba(0,0,0,0.1)] border border-foreground/20">
-                <card.icon className="w-5 h-5" style={{ color: card.color }} />
-              </div>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-foreground to-foreground/80 font-bold tracking-wide">{card.text}</span>
-            </motion.div>
-          ))}
+        {/* Right Visual Area (Visible on Desktop & Mobile) */}
+        <div className="w-full lg:w-1/2 relative h-[500px] lg:h-[600px] flex items-center justify-center">
+          {/* Animated Iridescent Blob */}
+          <div className="absolute w-[300px] h-[300px] md:w-[450px] md:h-[450px] iridescent-blob blur-[1px]" />
         </div>
       </motion.div>
       
@@ -267,7 +224,7 @@ export default function Hero() {
           transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
           className="w-6 h-10 border-2 border-slate-300 rounded-full flex justify-center pt-2"
         >
-          <div className="w-1 h-2 bg-emerald-500 rounded-full shadow-[0_0_10px_rgba(16,185,129,0.8)]" />
+          <div className="w-1 h-2 bg-indigo-500 rounded-full shadow-[0_0_10px_rgba(99,102,241,0.8)]" />
         </motion.div>
       </motion.div>
     </section>

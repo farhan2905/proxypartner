@@ -29,14 +29,14 @@ const solutions = [
 ];
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, x: -300 },
   visible: (i: number) => ({
     opacity: 1,
-    y: 0,
+    x: 0,
     transition: {
-      delay: i * 0.15,
-      duration: 0.6,
-      ease: [0.22, 1, 0.36, 1],
+      delay: i * 0.2,
+      duration: 1.2,
+      ease: [0.16, 1, 0.3, 1],
     },
   }),
 };
@@ -47,8 +47,9 @@ export default function Solutions() {
 
   return (
     <section ref={ref} className="bg-transparent py-16 md:py-24 relative overflow-hidden" id="solutions">
-      {/* Subtle Background Elements */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-bl from-emerald-500/10 to-transparent rounded-full blur-[100px] pointer-events-none" />
+      {/* Dynamic Background Gradients */}
+      <div className="absolute top-1/4 left-[-10%] w-[500px] h-[500px] bg-indigo-200/60 rounded-full blur-[120px] pointer-events-none animate-orb-1" />
+      <div className="absolute bottom-1/4 right-[-10%] w-[400px] h-[400px] bg-violet-200/50 rounded-full blur-[120px] pointer-events-none animate-orb-2" />
       
       <div className="w-[92vw] max-w-[1600px] mx-auto px-4 md:px-8 lg:px-12 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
@@ -59,7 +60,7 @@ export default function Solutions() {
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             className="text-2xl md:text-4xl font-bold text-foreground mt-6 mb-6 leading-tight"
           >
-            Removing the technical roadblocks to your <span className="text-emerald-400 bg-transparent">growth.</span>
+            Removing the technical roadblocks to your <span className="text-indigo-500 bg-transparent">growth.</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -67,7 +68,7 @@ export default function Solutions() {
             transition={{ delay: 0.2, duration: 0.7 }}
             className="text-foreground/80 text-lg"
           >
-            It&apos;s easy to get overwhelmed by "AI integrations," "cloud servers," and confusing software agency pitches. We filter out the tech jargon, focus entirely on what your business actually needs, and build systems that just work.
+            It&apos;s easy to get overwhelmed by &quot;AI integrations,&quot; &quot;cloud servers,&quot; and confusing software agency pitches. We filter out the tech jargon, focus entirely on what your business actually needs, and build systems that just work.
           </motion.p>
         </div>
 
@@ -81,17 +82,25 @@ export default function Solutions() {
                 variants={cardVariants}
                 initial="hidden"
                 animate={isInView ? "visible" : "hidden"}
-                className="glass-panel p-6 md:p-8 rounded-3xl border border-foreground/10 hover:border-emerald-500/30 transition-all duration-500 group"
+                className="relative overflow-hidden bg-white/20 backdrop-blur-2xl p-8 md:p-10 lg:p-12 min-h-[320px] md:min-h-[360px] flex flex-col justify-between rounded-[2rem] border border-white/60 hover:border-white/90 shadow-[inset_0_1px_1px_rgba(255,255,255,0.8),0_12px_40px_rgba(31,38,135,0.07)] transition-all duration-700 group hover:-translate-y-2 hover:bg-white/30 hover:shadow-[inset_0_1px_1px_rgba(255,255,255,1),0_20px_50px_rgba(99,102,241,0.15)]"
               >
-                <div className="w-14 h-14 rounded-2xl bg-foreground/5 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-emerald-500/10 transition-all duration-300 border border-foreground/5">
-                  <Icon className="w-6 h-6 text-foreground group-hover:text-emerald-400 transition-colors" />
+                {/* Subtle light sweep & glow on hover */}
+                <div className="absolute top-0 left-[-100%] w-[50%] h-[200%] bg-gradient-to-r from-transparent via-white/50 to-transparent rotate-[30deg] opacity-0 group-hover:opacity-100 group-hover:left-[200%] transition-all duration-1000 pointer-events-none" />
+                
+                {/* Content */}
+                <div className="relative z-10 flex flex-col h-full">
+                  <div className="w-16 h-16 rounded-2xl bg-white/60 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:bg-indigo-500/10 transition-all duration-500 border border-white/80 shadow-[inset_0_1px_2px_rgba(255,255,255,1),0_4px_12px_rgba(0,0,0,0.05)]">
+                    <Icon className="w-7 h-7 text-indigo-500 transition-colors drop-shadow-sm" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4 transition-colors tracking-tight leading-tight">
+                      {solution.title}
+                    </h3>
+                    <p className="text-foreground/75 leading-relaxed text-lg md:text-xl font-medium">
+                      {solution.description}
+                    </p>
+                  </div>
                 </div>
-                <h3 className="text-2xl font-bold text-foreground mb-4 group-hover:text-emerald-400 transition-colors">
-                  {solution.title}
-                </h3>
-                <p className="text-foreground/80 leading-relaxed text-lg">
-                  {solution.description}
-                </p>
               </motion.div>
             );
           })}

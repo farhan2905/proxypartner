@@ -26,8 +26,8 @@ const services = [
       'Legacy System Modernization',
       'E-Commerce & Portals',
     ],
-    gradient: 'from-emerald-400/30 to-emerald-200/10',
-    color: '#059669', // emerald-600
+    gradient: 'from-indigo-400/30 to-indigo-200/10',
+    color: '#4f46e5', // indigo-600
   },
   {
     icon: BrainCircuit,
@@ -41,8 +41,8 @@ const services = [
       'Data Processing Pipelines',
       'Automated Support',
     ],
-    gradient: 'from-teal-400/30 to-teal-200/10',
-    color: '#0d9488', // teal-600
+    gradient: 'from-violet-300/30 to-violet-200/10',
+    color: '#7c3aed', // violet-600
   },
   {
     icon: TrendingUp,
@@ -56,8 +56,8 @@ const services = [
       'Digital Transformation Mapping',
       'Strategic Implementation',
     ],
-    gradient: 'from-green-400/30 to-green-200/10',
-    color: '#16a34a', // green-600
+    gradient: 'from-indigo-400/30 to-indigo-200/10',
+    color: '#6366f1', // indigo-500
   },
   {
     icon: Server,
@@ -71,8 +71,8 @@ const services = [
       'Performance Monitoring',
       'Technical Support',
     ],
-    gradient: 'from-lime-400/30 to-lime-200/10',
-    color: '#65a30d', // lime-600
+    gradient: 'from-purple-400/30 to-purple-200/10',
+    color: '#818cf8', // indigo-400
   },
 ];
 
@@ -103,7 +103,7 @@ function WheelNode({
         style={{ rotate: itemRotation }}
         className={`w-20 h-20 rounded-full flex items-center justify-center transition-all duration-500 ${
           isActive 
-            ? 'glass-panel shadow-[0_8px_32px_rgba(0,0,0,0.15)] scale-110 border-2' 
+            ? 'glass-panel shadow-[0_8px_32px_rgba(0,0,0,0.10)] scale-110 border-2' 
             : 'glass-panel border-foreground/10 scale-90 opacity-60'
         }`}
         style={isActive ? { rotate: itemRotation, borderColor: service.color } : { rotate: itemRotation }}
@@ -144,10 +144,10 @@ export default function Services() {
         
         {/* Background ambient glow */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-          <div className="noise-overlay absolute inset-0 opacity-40" />
+          <div className="noise-overlay absolute inset-0 opacity-30" />
           <motion.div 
             animate={{ 
-              background: `radial-gradient(circle at 50% 50%, ${activeService.color}40 0%, transparent 60%)` 
+              background: `radial-gradient(circle at 50% 50%, ${activeService.color}20 0%, transparent 60%)` 
             }}
             transition={{ duration: 1 }}
             className="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[100vw] h-[100vw] opacity-60 blur-[100px]"
@@ -171,7 +171,6 @@ export default function Services() {
         </div>
 
         {/* The Wheel */}
-        {/* We place it so the top touches near the header. */}
         <motion.div
           className="absolute left-1/2 rounded-full border border-foreground/5 z-0"
           style={{
@@ -198,7 +197,6 @@ export default function Services() {
         </motion.div>
 
         {/* Active Service Content Container */}
-        {/* Rendered below the zenith point, overlapping the wheel */}
         <div className="relative z-30 w-full max-w-4xl px-6 mt-[10vh] md:mt-[12vh] translate-y-[80px] self-center">
           <AnimatePresence mode="wait">
             <motion.div
@@ -207,15 +205,18 @@ export default function Services() {
               animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
               exit={{ opacity: 0, y: -40, filter: 'blur(8px)' }}
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className="glass-card rounded-[2rem] p-6 md:p-8 overflow-hidden relative"
+              className="bg-white/20 backdrop-blur-3xl border border-white/60 shadow-[inset_0_1px_1px_rgba(255,255,255,0.8),0_12px_40px_rgba(31,38,135,0.07)] rounded-[2rem] p-6 md:p-8 overflow-hidden relative group"
             >
               {/* Card internal gradient */}
               <div className={`absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl ${activeService.gradient} blur-[60px] opacity-60 rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none`} />
 
+              {/* Subtle light sweep on hover */}
+              <div className="absolute top-0 left-[-100%] w-[50%] h-[200%] bg-gradient-to-r from-transparent via-white/50 to-transparent rotate-[30deg] opacity-0 group-hover:opacity-100 group-hover:left-[200%] transition-all duration-1000 pointer-events-none z-0" />
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 relative z-10">
                 {/* Left: Info */}
                 <div>
-                  <span className="inline-flex items-center gap-2 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-sm font-mono font-bold px-3 py-1 rounded-full mb-6">
+                  <span className="inline-flex items-center gap-2 bg-indigo-500/10 text-indigo-500 border border-indigo-500/20 text-sm font-mono font-bold px-3 py-1 rounded-full mb-6">
                     {activeService.number}
                   </span>
                   <h3 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-foreground to-foreground/70 mb-4">
@@ -227,7 +228,7 @@ export default function Services() {
                   
                   <motion.button
                     whileHover={{ gap: '12px' }}
-                    className="inline-flex items-center gap-2 text-emerald-400 text-sm font-semibold group bg-foreground/5 hover:bg-foreground/10 px-6 py-3 rounded-full border border-foreground/5 transition-colors"
+                    className="inline-flex items-center gap-2 text-indigo-500 text-sm font-semibold group bg-foreground/5 hover:bg-foreground/10 px-6 py-3 rounded-full border border-foreground/5 transition-colors"
                   >
                     Explore {activeService.title}
                     <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -248,8 +249,8 @@ export default function Services() {
                         transition={{ delay: i * 0.1, duration: 0.4 }}
                         className="flex items-center gap-4 group"
                       >
-                        <div className="w-8 h-8 rounded-full bg-foreground/5 flex items-center justify-center border border-foreground/5 group-hover:border-emerald-500/40 transition-colors">
-                           <span className="text-foreground/40 text-[10px] font-mono group-hover:text-emerald-400 transition-colors">
+                        <div className="w-8 h-8 rounded-full bg-foreground/5 flex items-center justify-center border border-foreground/5 group-hover:border-indigo-500/40 transition-colors">
+                           <span className="text-foreground/40 text-[10px] font-mono group-hover:text-indigo-500 transition-colors">
                              0{i+1}
                            </span>
                         </div>

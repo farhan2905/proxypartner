@@ -11,7 +11,7 @@ const testimonials = [
     name: 'Sarah Chen',
     role: 'CEO, TechFlow Inc.',
     initials: 'SC',
-    color: 'bg-emerald-500/20 text-emerald-400',
+    color: 'bg-blue-500/20 text-blue-400',
   },
   {
     quote:
@@ -19,7 +19,7 @@ const testimonials = [
     name: 'Marcus Rodriguez',
     role: 'Founder, GreenLeaf Co.',
     initials: 'MR',
-    color: 'bg-teal-500/15 text-teal-400',
+    color: 'bg-indigo-400/15 text-indigo-300',
   },
   {
     quote:
@@ -27,7 +27,7 @@ const testimonials = [
     name: 'Emily Watson',
     role: 'VP of Operations, DataSphere',
     initials: 'EW',
-    color: 'bg-green-500/15 text-green-400',
+    color: 'bg-blue-500/15 text-blue-400',
   },
 ];
 
@@ -62,7 +62,7 @@ export default function Testimonials() {
             Client Stories
           </p>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground tracking-tight">
-            Loved by <span className="bg-emerald-500 text-background px-2 rounded-lg">leaders</span> worldwide
+            Loved by <span className="bg-blue-600 text-white px-2 rounded-lg">leaders</span> worldwide
           </h2>
         </motion.div>
 
@@ -74,10 +74,10 @@ export default function Testimonials() {
               variants={cardVariants}
               initial="hidden"
               animate={isInView ? 'visible' : 'hidden'}
-              className="glass-card rounded-2xl p-8 hover:shadow-xl hover:shadow-emerald-500/10 transition-all duration-500 hover:-translate-y-1 flex flex-col"
+              className="glass-card rounded-2xl p-8 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-500 hover:-translate-y-1 flex flex-col"
             >
               {/* Quote icon */}
-              <Quote className="w-8 h-8 text-emerald-500 mb-6 flex-shrink-0" />
+              <Quote className="w-8 h-8 text-blue-500 mb-6 flex-shrink-0" />
 
               {/* Quote text */}
               <p className="text-foreground text-base leading-relaxed mb-8 flex-grow">

@@ -20,7 +20,7 @@ export default function SectionTag({ text, variant = 'light', className }: Secti
       transition={{ duration: 0.5 }}
       className={cn('flex items-center gap-3 mb-6', className)}
     >
-      <span className="w-3 h-3 bg-emerald-500 rounded-sm flex-shrink-0" />
+      <span className="w-3 h-3 bg-indigo-500 rounded-sm flex-shrink-0" />
       <span
         className={cn(
           'text-xs font-mono uppercase tracking-[0.15em] font-medium',
