@@ -5,11 +5,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Home as HomeIcon, LayoutGrid, Cog, FolderOpen, Mail } from 'lucide-react';
 
 const sidebarIcons = [
-  { icon: HomeIcon, label: 'Home', id: 'hero' },
-  { icon: LayoutGrid, label: 'Services', id: 'services' },
-  { icon: Cog, label: 'Approach', id: 'solutions' },
-  { icon: FolderOpen, label: 'Work', id: 'work' },
-  { icon: Mail, label: 'Contact', id: 'cta' },
+  { icon: HomeIcon, label: 'Home', id: 'hero', color: '238,130,238', shadow: 'from-[#6366f1] to-[#a855f7]' }, // Purple-ish
+  { icon: Cog, label: 'Approach', id: 'solutions', color: '245,158,11', shadow: 'from-[#f59e0b] to-[#ef4444]' }, // Amber to Red
+  { icon: LayoutGrid, label: 'Services', id: 'services', color: '16,185,129', shadow: 'from-[#10b981] to-[#3b82f6]' }, // Emerald to Blue
+  { icon: FolderOpen, label: 'Work', id: 'work', color: '6,182,212', shadow: 'from-[#06b6d4] to-[#3b82f6]' }, // Cyan to Blue
+  { icon: Mail, label: 'Contact', id: 'cta', color: '236,72,153', shadow: 'from-[#ec4899] to-[#8b5cf6]' }, // Pink to Purple
 ];
 
 export default function SidebarNavigation() {
@@ -55,60 +55,51 @@ export default function SidebarNavigation() {
 
   return (
     <motion.aside
-      layout
       initial={{ x: -100, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       transition={{ delay: 0.5, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className="hidden lg:flex fixed left-6 top-6 bottom-6 z-50 flex-col items-center py-8 px-3 glass-panel border border-white/20 shadow-2xl rounded-[2rem] justify-between overflow-hidden"
+      className="hidden lg:flex fixed left-6 top-1/2 -translate-y-1/2 z-50 flex-col items-center py-6 px-3 bg-white/5 backdrop-blur-2xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.3)] rounded-[2.5rem] h-auto gap-8"
     >
       {/* Logo Area */}
       <div 
-        className="cursor-pointer group flex flex-col items-center gap-1 mb-2"
+        className="cursor-pointer group flex flex-col items-center justify-center h-24 pt-2"
         onClick={() => handleClick('hero')}
       >
-        <span className="font-bold text-lg lg:text-xl tracking-tight text-foreground transition-transform group-hover:scale-105">
-          Cognisa<span className="text-indigo-500">.</span>
-        </span>
+        <div className="-rotate-90 origin-center whitespace-nowrap font-bold text-xs tracking-[0.25em] text-foreground/80 group-hover:text-foreground transition-colors">
+          COGNISA.
+        </div>
       </div>
 
       {/* Navigation Icons */}
-      <div className="flex flex-col gap-4 w-full">
-        {sidebarIcons.map(({ icon: Icon, label, id }) => {
+      <div className="flex flex-col gap-3 w-full items-center">
+        {sidebarIcons.map(({ icon: Icon, label, id, color, shadow }) => {
           const isActive = activeId === id;
           return (
-            <motion.button
+            <button
               key={id}
-              layout
               onClick={() => handleClick(id)}
-              className={`relative flex items-center gap-3 px-3 py-3 rounded-2xl transition-colors duration-300 ${
+              className={`relative flex items-center justify-center w-11 h-11 rounded-[1rem] transition-all duration-500 overflow-hidden ${
                 isActive
-                  ? 'bg-indigo-500/10 text-indigo-500 border border-indigo-500/20 shadow-[inset_0_1px_2px_rgba(255,255,255,0.8)]'
-                  : 'text-foreground/40 hover:text-foreground/80 hover:bg-foreground/5 border border-transparent'
+                  ? `border border-white/20 shadow-[0_0_20px_rgba(${color},0.3)] scale-110 translate-x-1`
+                  : 'text-foreground/40 bg-white/5 hover:text-foreground/80 hover:bg-white/10 border border-white/5'
               }`}
               title={label}
             >
-              <Icon className="w-5 h-5 shrink-0" strokeWidth={isActive ? 2.5 : 2} />
-              
-              <AnimatePresence>
-                {isActive && (
-                  <motion.span
-                    initial={{ width: 0, opacity: 0 }}
-                    animate={{ width: 'auto', opacity: 1 }}
-                    exit={{ width: 0, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                    className="overflow-hidden whitespace-nowrap text-sm font-bold pr-2"
-                  >
-                    {label}
-                  </motion.span>
-                )}
-              </AnimatePresence>
-            </motion.button>
+              {isActive && (
+                <div className={`absolute inset-0 bg-gradient-to-br ${shadow} opacity-20`} />
+              )}
+              <Icon 
+                className="w-[18px] h-[18px] shrink-0 relative z-10 transition-colors duration-500" 
+                strokeWidth={isActive ? 2.5 : 1.5} 
+                style={isActive ? { color: `rgb(${color})` } : {}}
+              />
+            </button>
           );
         })}
       </div>
 
       {/* Bottom Logo */}
-      <div className="w-10 h-10 rounded-2xl bg-indigo-500 flex items-center justify-center text-white font-bold text-xl shadow-[0_4px_14px_rgba(99,102,241,0.4)] border border-indigo-400/30">
+      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white font-bold text-lg shadow-[0_4px_14px_rgba(99,102,241,0.4)] mt-2">
         C
       </div>
     </motion.aside>

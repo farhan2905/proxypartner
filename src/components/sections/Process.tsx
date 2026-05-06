@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef, useState } from 'react';
-import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import SectionTag from '@/components/shared/SectionTag';
 import { ArrowUpRight } from 'lucide-react';
 
@@ -13,79 +13,103 @@ const works = [
 ];
 
 export default function Process() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isInteractive, setIsInteractive] = useState(false);
-  const { scrollYProgress } = useScroll({ target: containerRef, offset: ['start start', 'end end'] });
+  const targetRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: targetRef });
 
-  useMotionValueEvent(scrollYProgress, 'change', (latest) => {
-    const intervals = works.length - 1;
-    let index = Math.round(latest * intervals);
-    index = Math.max(0, Math.min(intervals, index));
-    if (index !== activeIndex) { setActiveIndex(index); setIsInteractive(false); }
-  });
-
-  const activeWork = works[activeIndex];
+  const x = useTransform(scrollYProgress, [0, 1], ["10%", "-75%"]);
 
   return (
-    <section id="work" ref={containerRef} className="relative h-[300vh] bg-transparent">
+    <section id="work" ref={targetRef} className="relative h-[400vh] bg-transparent">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="noise-overlay absolute inset-0 opacity-30 z-[1]" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] md:w-[50vw] md:h-[50vw] bg-indigo-200 rounded-full blur-[150px] opacity-[0.08]" />
+        <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] md:w-[50vw] md:h-[50vw] bg-indigo-200 rounded-full blur-[150px] opacity-[0.08] pointer-events-none" />
       </div>
-      <div className="sticky top-0 h-[100dvh] flex flex-col justify-center overflow-hidden z-10">
-        <div className="w-[92vw] max-w-[1600px] mx-auto w-full px-4 md:px-8 lg:px-12 py-12 md:py-0">
+      
+      <div className="sticky top-0 h-[100vh] flex flex-col justify-center overflow-hidden z-10">
+        <div className="w-[92vw] max-w-[1600px] mx-auto w-full px-4 md:px-8 lg:px-12 mb-8 mt-12 md:mt-0 flex-shrink-0">
           <SectionTag text="OUR WORK" variant="dark" />
-          <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="text-2xl md:text-3xl lg:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-foreground to-foreground/70 leading-tight tracking-tight mb-8 md:mb-12 drop-shadow-sm">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }} 
+            whileInView={{ opacity: 1, y: 0 }} 
+            viewport={{ once: true }} 
+            transition={{ duration: 0.6 }} 
+            className="text-2xl md:text-3xl lg:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-foreground to-foreground/70 leading-tight tracking-tight drop-shadow-sm mt-4"
+          >
             Digital <span className="text-gradient-accent drop-shadow-sm">systems</span> built for real businesses.
           </motion.h2>
-          <div className="relative">
-            <AnimatePresence mode="wait">
-              <motion.div key={activeIndex} initial={{ opacity: 0, scale: 0.95, y: 30, filter: 'blur(10px)' }} animate={{ opacity: 1, scale: 1, y: 0, filter: 'blur(0px)' }} exit={{ opacity: 0, scale: 0.95, y: -30, filter: 'blur(10px)' }} transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }} className="bg-white/20 backdrop-blur-3xl border border-white/60 shadow-[inset_0_1px_1px_rgba(255,255,255,0.8),0_12px_40px_rgba(31,38,135,0.07)] rounded-[2rem] md:rounded-[3rem] p-6 sm:p-8 md:p-10 lg:p-14 relative overflow-hidden flex flex-col max-h-[85vh] md:max-h-none group transition-all duration-700">
-                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 0.20 }} transition={{ duration: 1 }} className="absolute -top-32 -right-32 w-96 h-96 rounded-full blur-[80px] pointer-events-none hidden md:block" style={{ backgroundColor: activeWork.color }} />
-                
-                {/* Subtle light sweep on hover */}
-                <div className="absolute top-0 left-[-100%] w-[50%] h-[200%] bg-gradient-to-r from-transparent via-white/50 to-transparent rotate-[30deg] opacity-0 group-hover:opacity-100 group-hover:left-[200%] transition-all duration-1000 pointer-events-none z-0" />
-                <div className="flex flex-col lg:flex-row items-center gap-6 md:gap-8 lg:gap-12 relative z-10 w-full overflow-y-auto md:overflow-visible pr-2 md:pr-0 custom-scrollbar flex-1">
-                  <div className="flex flex-col md:flex-row items-start gap-4 md:gap-8 lg:gap-10 flex-1">
-                    <div className="flex-shrink-0 hidden lg:block">
-                      <div className="text-[4rem] lg:text-[5rem] xl:text-[6rem] font-bold leading-none tabular-nums" style={{ color: `${activeWork.color}20` }}>{activeWork.number}</div>
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-3 mb-3 md:mb-4">
-                        <span className="text-xl md:text-2xl">{activeWork.icon}</span>
-                        <span className="text-foreground/40 text-[10px] md:text-xs font-mono uppercase tracking-widest bg-foreground/5 px-2 md:px-3 py-1 rounded-full border border-foreground/5">{activeWork.detail}</span>
-                      </div>
-                      <h3 className="text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-foreground to-foreground/70 mb-3 md:mb-4 tracking-tight leading-tight">{activeWork.title}</h3>
-                      <p className="text-foreground/80 text-lg md:text-xl leading-relaxed mb-6 md:mb-8 max-w-xl">{activeWork.description}</p>
-                      <a href={activeWork.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-5 py-2.5 md:px-6 md:py-3 bg-foreground/5 hover:bg-foreground/10 border border-foreground/5 rounded-full text-foreground font-medium transition-colors text-sm md:text-base w-fit">View Live Website <ArrowUpRight className="w-4 h-4" /></a>
-                    </div>
-                  </div>
-                  <div className="w-full lg:w-[45%] xl:w-[50%] h-[200px] sm:h-[300px] md:h-[400px] lg:h-[450px] xl:h-[500px] flex-shrink-0 bg-transparent rounded-xl overflow-hidden border border-foreground/5 shadow-2xl relative transition-all duration-300 mt-4 lg:mt-0" onMouseLeave={() => setIsInteractive(false)}>
-                    <div className="absolute top-0 left-0 right-0 h-8 bg-foreground/5 border-b border-foreground/5 flex items-center px-4 gap-2 z-20 backdrop-blur-md">
-                      <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
-                      <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
-                      <div className="w-2.5 h-2.5 rounded-full bg-indigo-500/80" />
-                    </div>
-                    <div className="w-full h-full pt-8 relative z-10 bg-background">
-                      <iframe src={activeWork.link} className="w-full h-full border-none" sandbox="allow-scripts allow-same-origin" title={`${activeWork.title} live preview`} />
-                      <div className={`absolute inset-0 z-20 flex items-center justify-center transition-all duration-300 group ${isInteractive ? 'opacity-0 pointer-events-none' : 'opacity-100 bg-background/20 md:bg-transparent md:hover:bg-background/20 cursor-pointer pointer-events-auto'}`} onClick={() => setIsInteractive(true)}>
-                        {!isInteractive && <span className="px-4 py-2 bg-foreground/70 backdrop-blur-md text-background shadow-xl text-sm font-medium rounded-full opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity flex items-center gap-2">Tap to interact</span>}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="mt-8 md:mt-12 pt-6 md:pt-8 border-t border-foreground/5 flex items-center justify-between relative z-10 flex-shrink-0">
-                  <div className="flex items-center gap-3 md:gap-4">
-                    {works.map((work, i) => (<div key={i} className={`transition-all duration-500 rounded-full ${i === activeIndex ? 'w-12 h-2 shadow-[0_0_15px_rgba(0,0,0,0.3)]' : i < activeIndex ? 'w-2 h-2 opacity-40' : 'w-2 h-2 bg-foreground/10'}`} style={{ backgroundColor: i <= activeIndex ? work.color : undefined }} />))}
-                  </div>
-                  <span className="text-foreground/40 text-xs font-mono bg-foreground/10 px-3 py-1.5 rounded-full border border-foreground/5">Project {activeIndex + 1} of {works.length}</span>
-                </div>
-              </motion.div>
-            </AnimatePresence>
+        </div>
+
+        <motion.div style={{ x }} className="flex gap-16 md:gap-24 lg:gap-32 px-4 md:px-12 lg:px-20 w-fit pb-12 items-center">
+          {works.map((work, idx) => (
+            <WorkCard key={work.number} work={work} index={idx} total={works.length} />
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+function WorkCard({ work, index, total }: { work: typeof works[0], index: number, total: number }) {
+  const [isInteractive, setIsInteractive] = useState(false);
+
+  return (
+    <div className="flex flex-col gap-6 md:gap-8 w-[72vw] md:w-[55vw] lg:w-[42vw] flex-shrink-0 relative group items-center">
+      {/* Website Information Card (Above the browser) */}
+      <div className="w-full bg-white/10 backdrop-blur-2xl border border-white/20 p-5 md:p-8 rounded-2xl md:rounded-3xl shadow-[0_8px_32px_rgba(0,0,0,0.15)] transition-all duration-500 hover:bg-white/15 relative overflow-hidden">
+        {/* Decorative ambient color blur matching the project */}
+        <div className="absolute -top-16 -right-16 w-32 h-32 rounded-full blur-[50px] opacity-20 pointer-events-none" style={{ backgroundColor: work.color }} />
+        
+        <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 relative z-10">
+          <div>
+            <div className="flex items-center gap-3 mb-3">
+              <span className="text-xl">{work.icon}</span>
+              <span className="text-[10px] md:text-xs font-mono uppercase tracking-widest bg-foreground/10 px-3 py-1 rounded-full text-foreground/80">{work.detail}</span>
+            </div>
+            <h3 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground mb-3">{work.title}</h3>
+            <p className="text-sm md:text-base text-foreground/70 max-w-xl">{work.description}</p>
+          </div>
+          <div className="flex-shrink-0 flex items-center justify-between md:flex-col md:items-end md:justify-start">
+            <span className="text-4xl md:text-5xl font-bold opacity-10">{work.number}</span>
+            <a href={work.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 rounded-full font-medium text-sm hover:scale-105 hover:bg-indigo-500 hover:text-white transition-all md:mt-6 shadow-sm">
+              Visit Site <ArrowUpRight className="w-3 h-3" />
+            </a>
           </div>
         </div>
       </div>
-    </section>
+
+      {/* Browser Window Card */}
+      <div 
+        className="w-full h-[55vh] md:h-[55vh] rounded-[1.5rem] md:rounded-[2rem] border border-white/20 shadow-[0_20px_60px_rgba(0,0,0,0.4)] relative overflow-hidden bg-zinc-950"
+        onMouseLeave={() => setIsInteractive(false)}
+      >
+        {/* Browser Header */}
+        <div className="absolute top-0 left-0 right-0 h-10 bg-white/5 backdrop-blur-xl border-b border-white/10 flex items-center px-6 gap-2 z-30">
+          <div className="w-3 h-3 rounded-full bg-[#ff5f56]" />
+          <div className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
+          <div className="w-3 h-3 rounded-full bg-[#27c93f]" />
+          <div className="ml-4 flex-1 flex justify-center">
+            <div className="bg-black/30 backdrop-blur-md px-4 py-1 rounded-md text-xs text-white/50 w-1/2 max-w-[200px] truncate text-center border border-white/5 shadow-inner">
+              {work.link.replace('https://', '')}
+            </div>
+          </div>
+        </div>
+
+        {/* Browser Body / Iframe */}
+        <div className="w-full h-full pt-10 relative z-10 bg-background/50">
+          <iframe src={work.link} className="w-full h-full border-none scale-[1.01]" sandbox="allow-scripts allow-same-origin" title={work.title} />
+          
+          <div 
+            className={`absolute inset-0 z-20 flex items-center justify-center transition-all duration-300 ${isInteractive ? 'opacity-0 pointer-events-none' : 'opacity-100 bg-background/20 cursor-pointer pointer-events-auto backdrop-blur-[2px]'}`} 
+            onClick={() => setIsInteractive(true)}
+          >
+            {!isInteractive && (
+              <span className="px-6 py-3 bg-white/10 backdrop-blur-xl border border-white/20 text-white shadow-2xl text-sm font-medium rounded-full flex items-center gap-2 transform transition-transform hover:scale-105">
+                Tap to interact
+              </span>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }

@@ -1,118 +1,55 @@
 'use client';
 
-import { useRef, useState, useEffect } from 'react';
-import { motion, AnimatePresence, useScroll, useTransform, useMotionValueEvent } from 'framer-motion';
-import {
-  Megaphone,
-  TrendingUp,
-  Code2,
-  BrainCircuit,
-  Palette,
-  Server,
-  ArrowRight,
-} from 'lucide-react';
-import SectionTag from '@/components/shared/SectionTag';
+import { useRef, useState } from 'react';
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
+import { Code2, BrainCircuit, TrendingUp, Server, ArrowRight, Globe } from 'lucide-react';
 
 const services = [
   {
-    icon: Code2,
+    icon: Globe,
     number: '01',
+    category: 'CUSTOM SOFTWARE',
+    url: 'https://cognisa.io/software-development',
     title: 'Software Development',
     description:
       'Build fast, scalable, and custom web applications that solve your precise business bottlenecks. We deliver clean, maintainable code engineered for high performance.',
-    subservices: [
-      'Custom Web Applications',
-      'API Integration',
-      'Legacy System Modernization',
-      'E-Commerce & Portals',
-    ],
-    gradient: 'from-indigo-400/30 to-indigo-200/10',
+    subservices: ['Custom Web Applications', 'API Integration', 'Legacy System Modernization', 'E-Commerce & Portals'],
     color: '#4f46e5', // indigo-600
   },
   {
     icon: BrainCircuit,
     number: '02',
+    category: 'AI & AUTOMATION',
+    url: 'https://cognisa.io/ai-automation',
     title: 'AI Automation Solution',
     description:
       'Replace manual data entry and repetitive workflows with intelligent AI agents. We build custom software solutions that operate 24/7 without fatiguing.',
-    subservices: [
-      'Workflow Automation',
-      'Custom AI Agents',
-      'Data Processing Pipelines',
-      'Automated Support',
-    ],
-    gradient: 'from-violet-300/30 to-violet-200/10',
+    subservices: ['Workflow Automation', 'Custom AI Agents', 'Data Processing Pipelines', 'Automated Support'],
     color: '#7c3aed', // violet-600
   },
   {
     icon: TrendingUp,
     number: '03',
+    category: 'STRATEGY',
+    url: 'https://cognisa.io/ai-consultancy',
     title: 'AI Consultancy',
     description:
       'Not sure how AI fits into your business model? We map out exactly where technology can save you time, cut costs, and unlock new revenue entirely risk-free.',
-    subservices: [
-      'Tech Stack Audits',
-      'AI Feasibility Studies',
-      'Digital Transformation Mapping',
-      'Strategic Implementation',
-    ],
-    gradient: 'from-indigo-400/30 to-indigo-200/10',
+    subservices: ['Tech Stack Audits', 'AI Feasibility Studies', 'Digital Transformation Mapping', 'Strategic Implementation'],
     color: '#6366f1', // indigo-500
   },
   {
     icon: Server,
     number: '04',
+    category: 'INFRASTRUCTURE',
+    url: 'https://cognisa.io/it-services',
     title: 'IT Services',
     description:
       'Keep your custom infrastructure secure and running smoothly. From cloud deployment to ongoing server maintenance, we protect and manage your tech investment.',
-    subservices: [
-      'Cloud Architecture',
-      'System Maintenance',
-      'Performance Monitoring',
-      'Technical Support',
-    ],
-    gradient: 'from-purple-400/30 to-purple-200/10',
+    subservices: ['Cloud Architecture', 'System Maintenance', 'Performance Monitoring', 'Technical Support'],
     color: '#818cf8', // indigo-400
   },
 ];
-
-// Extracted Node component to handle counter-rotation cleanly
-function WheelNode({ 
-  service, 
-  index, 
-  wheelRotation, 
-  isActive 
-}: { 
-  service: typeof services[0], 
-  index: number, 
-  wheelRotation: any, 
-  isActive: boolean 
-}) {
-  const angle = index * 90; // 360 / 4
-  
-  // Counter rotate so the icon stays upright
-  const itemRotation = useTransform(wheelRotation, (r: number) => -(r + angle));
-  const Icon = service.icon;
-
-  return (
-    <div
-      className="absolute top-[-40px] left-1/2 -translate-x-1/2 origin-[50%_40rem] z-20 pointer-events-none"
-      style={{ transform: `rotate(${angle}deg)` }}
-    >
-      <motion.div
-        style={{ rotate: itemRotation }}
-        className={`w-20 h-20 rounded-full flex items-center justify-center transition-all duration-500 ${
-          isActive 
-            ? 'glass-panel shadow-[0_8px_32px_rgba(0,0,0,0.10)] scale-110 border-2' 
-            : 'glass-panel border-foreground/10 scale-90 opacity-60'
-        }`}
-        style={isActive ? { rotate: itemRotation, borderColor: service.color } : { rotate: itemRotation }}
-      >
-        <Icon className={`w-8 h-8 transition-colors duration-500`} style={{ color: isActive ? service.color : '#64748b' }} />
-      </motion.div>
-    </div>
-  );
-}
 
 export default function Services() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -123,13 +60,9 @@ export default function Services() {
     offset: ['start start', 'end end'],
   });
 
-  // Map scroll progress to wheel rotation: 0 -> -270 degrees (3 intervals of 90 degrees)
-  const wheelRotation = useTransform(scrollYProgress, [0, 1], [0, -270]);
-
   useMotionValueEvent(scrollYProgress, 'change', (latest) => {
-    // 4 items -> 3 intervals.
-    let index = Math.round(latest * 3);
-    index = Math.max(0, Math.min(3, index));
+    let index = Math.floor(latest * 4);
+    if (index >= 4) index = 3;
     if (index !== activeIndex) {
       setActiveIndex(index);
     }
@@ -138,134 +71,160 @@ export default function Services() {
   const activeService = services[activeIndex];
 
   return (
-    <section id="services" ref={containerRef} className="relative h-[300vh] bg-transparent">
+    <section id="services" ref={containerRef} className="relative h-[400vh] bg-transparent">
       {/* Sticky visible area */}
-      <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col items-start pt-24 md:pt-32">
+      <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-center items-center pt-20 pb-10">
         
         {/* Background ambient glow */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
           <div className="noise-overlay absolute inset-0 opacity-30" />
           <motion.div 
             animate={{ 
-              background: `radial-gradient(circle at 50% 50%, ${activeService.color}20 0%, transparent 60%)` 
+              background: `radial-gradient(circle at 50% 50%, ${activeService.color}15 0%, transparent 50%)`
             }}
             transition={{ duration: 1 }}
-            className="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[100vw] h-[100vw] opacity-60 blur-[100px]"
+            className="absolute inset-0 w-full h-full"
           />
         </div>
 
-        {/* Section Header */}
-        <div className="relative z-10 text-left px-6 mb-8 w-[92vw] max-w-[1600px] mx-auto px-4 md:px-8 lg:px-12 flex-shrink-0">
-          <div className="max-w-4xl">
-            <SectionTag text="OUR SERVICES" variant="dark" />
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-foreground to-foreground/70 leading-tight tracking-tight mt-6 mb-4 drop-shadow-sm">
-              Services that drive <span className="text-gradient-accent drop-shadow-sm">growth</span>
+        {/* Content Wrapper */}
+        <div className="relative z-10 w-[92vw] max-w-[1200px] mx-auto flex flex-col items-center">
+          
+          {/* Header Area */}
+          <div className="text-center max-w-3xl mx-auto px-4 mb-8 md:mb-12 w-full">
+            <div className="inline-block text-foreground/40 tracking-[0.2em] text-[10px] md:text-xs font-mono uppercase mb-3">OUR SERVICES</div>
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#38bdf8] via-[#818cf8] to-[#c084fc] drop-shadow-sm mb-4 leading-tight tracking-tight">
+              Services that drive growth.
             </h2>
-            <p className="text-foreground/80 text-lg md:text-xl max-w-2xl mb-4">
+            <p className="text-foreground/70 text-base md:text-lg leading-relaxed mb-4 font-medium hidden md:block">
               No running around for different experts. We handle it all. From custom software to AI automation, we build the systems that scale your business.
             </p>
-            <p className="text-foreground/60 text-base md:text-lg max-w-2xl">
-              Our specialized teams work seamlessly together to deliver end-to-end solutions. Scroll down to explore our core focus areas.
-            </p>
           </div>
-        </div>
 
-        {/* The Wheel */}
-        <motion.div
-          className="absolute left-1/2 rounded-full border border-foreground/5 z-0"
-          style={{
-            width: '90rem',
-            height: '90rem',
-            top: '32vh',
-            x: '-50%',
-            rotate: wheelRotation,
-          }}
-        >
-          {/* Wheel inner circles for aesthetics */}
-          <div className="absolute inset-[100px] rounded-full border border-foreground/5 border-dashed opacity-50" />
-          <div className="absolute inset-[200px] rounded-full border border-foreground/[0.02]" />
-          
-          {services.map((service, i) => (
-            <WheelNode 
-              key={i} 
-              service={service} 
-              index={i} 
-              wheelRotation={wheelRotation} 
-              isActive={activeIndex === i} 
-            />
-          ))}
-        </motion.div>
-
-        {/* Active Service Content Container */}
-        <div className="relative z-30 w-full max-w-4xl px-6 mt-[10vh] md:mt-[12vh] translate-y-[80px] self-center">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeIndex}
-              initial={{ opacity: 0, y: 40, filter: 'blur(8px)' }}
-              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-              exit={{ opacity: 0, y: -40, filter: 'blur(8px)' }}
-              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className="bg-white/20 backdrop-blur-3xl border border-white/60 shadow-[inset_0_1px_1px_rgba(255,255,255,0.8),0_12px_40px_rgba(31,38,135,0.07)] rounded-[2rem] p-6 md:p-8 overflow-hidden relative group"
-            >
-              {/* Card internal gradient */}
-              <div className={`absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl ${activeService.gradient} blur-[60px] opacity-60 rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none`} />
-
-              {/* Subtle light sweep on hover */}
-              <div className="absolute top-0 left-[-100%] w-[50%] h-[200%] bg-gradient-to-r from-transparent via-white/50 to-transparent rotate-[30deg] opacity-0 group-hover:opacity-100 group-hover:left-[200%] transition-all duration-1000 pointer-events-none z-0" />
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 relative z-10">
-                {/* Left: Info */}
-                <div>
-                  <span className="inline-flex items-center gap-2 bg-indigo-500/10 text-indigo-500 border border-indigo-500/20 text-sm font-mono font-bold px-3 py-1 rounded-full mb-6">
-                    {activeService.number}
-                  </span>
-                  <h3 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-foreground to-foreground/70 mb-4">
-                    {activeService.title}
-                  </h3>
-                  <p className="text-foreground/80 text-base leading-relaxed mb-8">
-                    {activeService.description}
-                  </p>
-                  
-                  <motion.button
-                    whileHover={{ gap: '12px' }}
-                    className="inline-flex items-center gap-2 text-indigo-500 text-sm font-semibold group bg-foreground/5 hover:bg-foreground/10 px-6 py-3 rounded-full border border-foreground/5 transition-colors"
-                  >
-                    Explore {activeService.title}
-                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                  </motion.button>
+          {/* Cards Area */}
+          <div className="w-full relative h-[480px] md:h-[420px] lg:h-[450px] mb-8">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeIndex}
+                initial={{ opacity: 0, y: 15, filter: 'blur(4px)' }}
+                animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                exit={{ opacity: 0, y: -15, filter: 'blur(4px)' }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+                className="absolute inset-0 w-full bg-white/5 backdrop-blur-2xl border border-white/10 rounded-[1.5rem] md:rounded-[2rem] shadow-[0_20px_60px_rgba(0,0,0,0.15)] flex flex-col overflow-hidden"
+              >
+                {/* Decorative ambient color blur inside card */}
+                <div 
+                  className="absolute -top-32 -left-32 w-64 h-64 rounded-full blur-[90px] opacity-30 pointer-events-none" 
+                  style={{ backgroundColor: activeService.color }} 
+                />
+                
+                {/* Browser Top Bar */}
+                <div className="w-full flex items-center gap-2 px-6 py-3 md:py-4 border-b border-white/5 bg-white/[0.02]">
+                  <div className="flex gap-1.5">
+                    <div className="w-2.5 h-2.5 rounded-full bg-red-400/80" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-amber-400/80" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-green-400/80" />
+                  </div>
+                  <div className="text-[9px] sm:text-[10px] font-mono text-foreground/40 ml-4">{activeService.url}</div>
                 </div>
 
-                {/* Right: Subservices */}
-                <div className="flex flex-col justify-center">
-                  <p className="text-foreground/40 text-xs font-mono uppercase tracking-widest mb-6">
-                    What we offer
-                  </p>
-                  <div className="space-y-4">
-                    {activeService.subservices.map((sub, i) => (
-                      <motion.div
-                        key={sub}
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: i * 0.1, duration: 0.4 }}
-                        className="flex items-center gap-4 group"
-                      >
-                        <div className="w-8 h-8 rounded-full bg-foreground/5 flex items-center justify-center border border-foreground/5 group-hover:border-indigo-500/40 transition-colors">
-                           <span className="text-foreground/40 text-[10px] font-mono group-hover:text-indigo-500 transition-colors">
-                             0{i+1}
-                           </span>
-                        </div>
-                        <span className="text-foreground/80 text-sm md:text-base group-hover:text-foreground transition-colors">
-                          {sub}
-                        </span>
-                      </motion.div>
-                    ))}
+                {/* Card Content Row */}
+                <div className="flex flex-col-reverse md:flex-row gap-6 md:gap-12 items-stretch p-6 md:p-10 lg:p-12 pb-8 md:pb-12 h-full flex-grow">
+                  
+                  {/* Left Content */}
+                  <div className="w-full md:w-[50%] text-left relative z-10 flex flex-col justify-center h-full">
+                    <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-[8px] md:text-[10px] font-bold uppercase tracking-[0.15em] text-foreground/60 mb-4 md:mb-6 w-fit shadow-sm">
+                      {activeService.category}
+                    </div>
+                    
+                    <h3 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-foreground mb-3 tracking-tight">
+                      {activeService.title}
+                    </h3>
+                    
+                    <p className="text-sm md:text-base text-foreground/70 mb-6 leading-relaxed font-medium">
+                      {activeService.description}
+                    </p>
+                    
+                    <div className="mt-auto block">
+                      <button className="group inline-flex items-center gap-2 px-5 py-2.5 md:px-6 md:py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-[1.25rem] text-xs md:text-sm font-semibold transition-all text-foreground/80 hover:text-foreground">
+                        Explore {activeService.title}
+                        <ArrowRight className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Right Graphic Area (Subservices List) */}
+                  <div className="w-full md:w-[50%] h-[200px] md:h-full bg-white/[0.03] border border-white/5 rounded-[1rem] md:rounded-[1.5rem] flex flex-col relative overflow-hidden shadow-inner p-6 md:p-8">
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent pointer-events-none" />
+                    
+                    <div className="relative z-10 flex flex-col h-full opacity-[0.9]">
+                      <div className="text-[10px] md:text-xs font-mono font-semibold tracking-[0.2em] uppercase mb-4 md:mb-6 text-foreground/50 border-b border-white/5 pb-3">
+                        What we offer
+                      </div>
+                      
+                      <ul className="flex flex-col gap-3 md:gap-4 w-full h-full justify-center">
+                        {activeService.subservices.map((sub, idx) => (
+                          <li key={idx} className="flex items-center gap-4 py-2 border-b border-white/5 last:border-0 group">
+                            <span className="text-xs md:text-sm font-mono font-bold w-6 opacity-40 group-hover:opacity-80 transition-opacity" style={{ color: activeService.color }}>
+                              0{idx + 1}
+                            </span>
+                            <span className="text-sm md:text-base text-foreground/80 font-medium group-hover:text-foreground transition-colors">
+                              {sub}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-        </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
 
+          {/* Arched Pagination Overlay */}
+          <div className="flex flex-col items-center justify-center relative w-full h-[140px] pointer-events-none mt-4">
+            <div className="relative w-full h-full flex justify-center items-start">
+              {services.map((service, i) => {
+                const distance = Math.abs(activeIndex - i);
+                const isActive = activeIndex === i;
+                
+                // Arch math: Creates an umbrella curve shape
+                const xOffset = (i - activeIndex) * 90; // horizontal separation
+                const yOffset = distance * distance * 15; // parabolic arch downward
+                const scale = Math.max(0.4, 1 - distance * 0.25);
+                const opacity = Math.max(0.1, 1 - distance * 0.6);
+                const rotate = (i - activeIndex) * 15; // outward rotation
+                
+                return (
+                  <motion.div
+                    key={service.number}
+                    className="absolute top-0 flex flex-col items-center"
+                    animate={{
+                      x: xOffset,
+                      y: yOffset,
+                      scale: isActive ? 1.2 : scale,
+                      opacity: isActive ? 1 : opacity,
+                      rotate: rotate,
+                      zIndex: isActive ? 10 : 5 - distance
+                    }}
+                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                  >
+                      <div 
+                        className={`rounded-full flex items-center justify-center font-bold text-sm md:text-xl transition-colors duration-300 ${isActive ? 'w-16 h-16 md:w-20 md:h-20 bg-white text-black shadow-[0_0_20px_rgba(255,255,255,0.4)] border border-white' : 'w-16 h-16 md:w-20 md:h-20 bg-white/5 backdrop-blur-sm border border-white/10 text-foreground/60'}`}
+                      >
+                        {service.number}
+                      </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+            
+            <div className="absolute bottom-2 text-foreground/30 text-[10px] md:text-xs font-mono tracking-[0.2em] font-bold uppercase">
+              Service {activeIndex + 1} of 4
+            </div>
+          </div>
+          
+        </div>
       </div>
     </section>
   );

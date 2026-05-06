@@ -35,16 +35,16 @@ export default function Navigation() {
   return (
     <>
       <motion.header
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
+        initial={{ y: -100, x: '-50%' }}
+        animate={{ y: 0, x: '-50%' }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        className={`fixed top-4 md:top-6 left-1/2 z-50 transition-all duration-300 w-[95vw] md:w-auto rounded-full border ${
           scrolled
-            ? 'glass border-b border-foreground/5 py-3 shadow-sm'
-            : 'bg-transparent py-5'
+            ? 'bg-background/50 backdrop-blur-2xl border-foreground/10 shadow-lg py-2 md:py-3'
+            : 'bg-background/20 backdrop-blur-xl border-foreground/10 py-3 md:py-4'
         }`}
       >
-        <nav className="w-[92vw] max-w-[1600px] mx-auto px-4 md:px-8 lg:px-12 flex items-center justify-between">
+        <nav className="mx-auto px-4 md:px-6 flex items-center justify-between gap-8 lg:gap-14">
           {/* Logo */}
           <a
             href="/"
