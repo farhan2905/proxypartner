@@ -156,6 +156,7 @@ body {
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+  scrollbar-gutter: stable; /* Prevents layout shift when scrollbar appears/disappears */
 }
 
 /* Selection highlight — indigo */

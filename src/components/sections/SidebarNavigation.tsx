@@ -59,6 +59,7 @@ export default function SidebarNavigation() {
       animate={{ x: 0, opacity: 1 }}
       transition={{ delay: 0.5, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       className="hidden lg:flex fixed left-6 top-1/2 -translate-y-1/2 z-50 flex-col items-center py-6 px-3 bg-white/5 backdrop-blur-2xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.3)] rounded-[2.5rem] h-auto gap-8"
+      suppressHydrationWarning
     >
       {/* Logo Area */}
       <div 
