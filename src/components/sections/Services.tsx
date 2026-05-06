@@ -91,8 +91,14 @@ export default function Services() {
         <div className="relative z-10 w-[92vw] max-w-[1200px] mx-auto flex flex-col items-center">
           
           {/* Header Area */}
-          <div className="text-center max-w-3xl mx-auto px-4 mb-8 md:mb-12 w-full">
-            <div className="inline-block text-foreground/40 tracking-[0.2em] text-[10px] md:text-xs font-mono uppercase mb-3">OUR SERVICES</div>
+          <div className="text-center max-w-3xl mx-auto px-4 mb-12 md:mb-16 w-full">
+            <div className="inline-flex items-center gap-4 px-6 py-3 rounded-2xl border backdrop-blur-[100px] bg-gradient-to-r from-white/8 via-white/4 to-white/2 border-white/20 hover:border-white/35 shadow-[inset_0_2px_2px_rgba(255,255,255,0.3),0_8px_24px_rgba(31,38,135,0.1)] mb-6 group">
+              <span className="w-4 h-4 bg-gradient-to-br from-indigo-400 to-indigo-600 rounded-md group-hover:scale-110 transition-transform" />
+              <span className="text-sm md:text-base font-mono uppercase tracking-[0.2em] font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-violet-400 to-purple-400">
+                OUR SERVICES
+              </span>
+              <span className="h-1 w-12 md:w-16 rounded-full bg-gradient-to-r from-indigo-400/60 to-transparent" />
+            </div>
             <h2 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#38bdf8] via-[#818cf8] to-[#c084fc] drop-shadow-sm mb-4 leading-tight tracking-tight">
               Services that drive growth.
             </h2>

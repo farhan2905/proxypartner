@@ -18,23 +18,33 @@ export default function SectionTag({ text, variant = 'light', className }: Secti
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-50px' }}
       transition={{ duration: 0.5 }}
-      className={cn('flex items-center gap-3 mb-6', className)}
+      className={cn('flex items-center gap-4 mb-8 group', className)}
     >
-      <span className="w-3 h-3 bg-indigo-500 rounded-sm flex-shrink-0" />
-      <span
-        className={cn(
-          'text-xs font-mono uppercase tracking-[0.15em] font-medium',
-          isLight ? 'text-foreground/60' : 'text-foreground/55'
-        )}
-      >
-        {text}
-      </span>
-      <span
-        className={cn(
-          'h-px flex-grow max-w-[60px]',
-          isLight ? 'bg-foreground/30' : 'bg-foreground/25'
-        )}
-      />
+      {/* Glass container */}
+      <div className={cn(
+        'inline-flex items-center gap-4 px-6 py-3 rounded-2xl border backdrop-blur-[100px] transition-all duration-500',
+        isLight 
+          ? 'bg-gradient-to-r from-white/8 via-white/4 to-white/2 border-white/20 hover:border-white/35 shadow-[inset_0_2px_2px_rgba(255,255,255,0.3),0_8px_24px_rgba(31,38,135,0.1)]'
+          : 'bg-gradient-to-r from-white/6 via-white/3 to-white/1 border-white/15 hover:border-white/30 shadow-[inset_0_2px_2px_rgba(255,255,255,0.25),0_8px_24px_rgba(31,38,135,0.08)]'
+      )}>
+        <span className="w-4 h-4 bg-gradient-to-br from-indigo-400 to-indigo-600 rounded-md flex-shrink-0 group-hover:scale-110 transition-transform" />
+        <span
+          className={cn(
+            'text-sm md:text-base font-mono uppercase tracking-[0.2em] font-bold text-transparent bg-clip-text',
+            isLight 
+              ? 'bg-gradient-to-r from-indigo-400 via-violet-400 to-purple-400' 
+              : 'bg-gradient-to-r from-indigo-300 via-violet-300 to-purple-300'
+          )}
+        >
+          {text}
+        </span>
+        <span
+          className={cn(
+            'h-1 flex-grow max-w-[80px] rounded-full bg-gradient-to-r',
+            isLight ? 'from-indigo-400/60 to-transparent' : 'from-indigo-300/50 to-transparent'
+          )}
+        />
+      </div>
     </motion.div>
   );
 }
