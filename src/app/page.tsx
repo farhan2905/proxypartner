@@ -1,6 +1,7 @@
 'use client';
 
 import SidebarNavigation from '@/components/sections/SidebarNavigation';
+import MobileNavigation from '@/components/sections/MobileNavigation';
 import Hero from '@/components/sections/Hero';
 import Marquee from '@/components/sections/Marquee';
 import Challenges from '@/components/sections/Challenges';
@@ -18,9 +19,10 @@ export default function Home() {
   return (
     <main className="min-h-screen py-6 px-3 md:py-8 md:px-6 lg:px-10 flex justify-center items-start overflow-x-clip text-text-primary">
       <SidebarNavigation />
+      <MobileNavigation />
 
       {/* Main Content Glass Container */}
-      <div className="glass w-full max-w-[1600px] overflow-x-clip relative lg:ml-16">
+      <div className="glass w-full max-w-[1600px] overflow-x-clip relative lg:ml-16 pt-20 lg:pt-0">
         <Hero />
         <Marquee />
         <Challenges />
