@@ -88,7 +88,7 @@ export default function Services() {
         </div>
 
         {/* Content Wrapper */}
-        <div className="relative z-10 w-[92vw] max-w-[1200px] mx-auto flex flex-col items-center">
+        <div className="relative z-10 w-full max-w-[1200px] mx-auto flex flex-col items-center">
           
           {/* Header Area */}
           <div className="text-center max-w-3xl mx-auto px-4 mb-12 md:mb-16 w-full">

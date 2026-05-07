@@ -107,7 +107,7 @@ export default function Hero() {
 
       <motion.div 
         style={{ y: contentY }}
-        className="relative z-20 w-[92vw] max-w-[1600px] mx-auto px-4 md:px-8 lg:px-12 w-full flex flex-col items-center text-center justify-center pt-24 pb-12 lg:pt-56"
+        className="relative z-20 w-full max-w-[1400px] mx-auto px-4 md:px-8 lg:px-12 flex flex-col items-center text-center justify-center pt-24 pb-12 lg:pt-56"
       >
         <div className="w-full max-w-4xl pt-12 lg:pt-32 flex flex-col items-center">
           {/* Status Badge */}

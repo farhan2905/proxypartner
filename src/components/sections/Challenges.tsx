@@ -53,7 +53,7 @@ export default function Challenges() {
 
   return (
     <section ref={ref} className="bg-transparent py-16 md:py-24" id="challenges">
-      <div className="w-[92vw] max-w-[1600px] mx-auto px-4 md:px-8 lg:px-12">
+      <div className="w-full max-w-[1400px] mx-auto px-4 md:px-8 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
           
           {/* Left Column - Heading */}

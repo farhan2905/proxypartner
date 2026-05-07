@@ -24,7 +24,7 @@ const footerLinks = {
 export default function Footer() {
   return (
     <footer className="bg-transparent border-t border-foreground/10">
-      <div className="w-[92vw] max-w-[1600px] mx-auto px-4 md:px-8 lg:px-12 py-16 md:py-20">
+      <div className="w-full max-w-[1400px] mx-auto px-4 md:px-8 lg:px-12 py-16 md:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           <div className="lg:col-span-1">
             <a href="/" className="text-foreground font-bold text-2xl tracking-tight">
@@ -79,7 +79,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="border-t border-foreground/10">
-        <div className="w-[92vw] max-w-[1600px] mx-auto px-4 md:px-8 lg:px-12 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="w-full max-w-[1400px] mx-auto px-4 md:px-8 lg:px-12 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-foreground/30 text-xs">&copy; {new Date().getFullYear()} Cognisa. All rights reserved.</p>
           <div className="flex items-center gap-6">
             <a href="#" className="text-foreground/30 text-xs hover:text-foreground/50 transition-colors">Privacy Policy</a>

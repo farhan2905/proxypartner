@@ -51,7 +51,7 @@ export default function Solutions() {
       <div className="absolute top-1/4 left-[-10%] w-[500px] h-[500px] bg-indigo-200/60 rounded-full blur-[120px] pointer-events-none animate-orb-1" />
       <div className="absolute bottom-1/4 right-[-10%] w-[400px] h-[400px] bg-violet-200/50 rounded-full blur-[120px] pointer-events-none animate-orb-2" />
       
-      <div className="w-[92vw] max-w-[1600px] mx-auto px-4 md:px-8 lg:px-12 relative z-10">
+      <div className="w-full max-w-[1400px] mx-auto px-4 md:px-8 lg:px-12 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
           <SectionTag text="OUR APPROACH" variant="dark" className="justify-center" />
           <motion.h2
@@ -82,14 +82,14 @@ export default function Solutions() {
                 variants={cardVariants}
                 initial="hidden"
                 animate={isInView ? "visible" : "hidden"}
-                className="relative overflow-hidden bg-gradient-to-br from-white/1 via-transparent to-transparent backdrop-blur-[250px] p-6 md:p-7 lg:p-9 min-h-[260px] md:min-h-[280px] flex flex-col justify-between rounded-[2rem] border border-white/5 hover:border-white/15 shadow-[inset_0_4px_4px_rgba(255,255,255,0.3),inset_0_-2px_2px_rgba(0,0,0,0.02),0_25px_60px_rgba(31,38,135,0.15),0_0_2px_rgba(255,255,255,1)] transition-all duration-700 group hover:-translate-y-4 hover:bg-gradient-to-br hover:from-white/2 hover:via-transparent hover:to-transparent hover:shadow-[inset_0_4px_4px_rgba(255,255,255,0.4),inset_0_-2px_2px_rgba(0,0,0,0.02),0_35px_100px_rgba(99,102,241,0.5),0_0_3px_rgba(255,255,255,1.2)]"
+                className="relative overflow-hidden bg-white/40 backdrop-blur-2xl p-6 md:p-7 lg:p-9 min-h-[260px] md:min-h-[280px] flex flex-col justify-between rounded-[2rem] border border-white/60 shadow-[0_8px_32px_rgba(31,38,135,0.08),inset_0_1px_0_rgba(255,255,255,0.6)] transition-all duration-700 group hover:-translate-y-4 hover:bg-white/60 hover:border-white/80 hover:shadow-[0_20px_60px_rgba(99,102,241,0.15),inset_0_1px_0_rgba(255,255,255,0.8)]"
               >
                 {/* Subtle light sweep & glow on hover */}
                 <div className="absolute top-0 left-[-100%] w-[50%] h-[200%] bg-gradient-to-r from-transparent via-white/35 to-transparent rotate-[30deg] opacity-0 group-hover:opacity-100 group-hover:left-[200%] transition-all duration-1000 pointer-events-none" />
                 
                 {/* Content */}
                 <div className="relative z-10 flex flex-col h-full">
-                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-white/3 to-transparent flex items-center justify-center mb-8 group-hover:scale-110 group-hover:bg-gradient-to-br group-hover:from-indigo-500/5 group-hover:to-transparent transition-all duration-500 border border-white/5 shadow-[inset_0_4px_2px_rgba(255,255,255,0.3),0_4px_12px_rgba(0,0,0,0.02)]">
+                  <div className="w-16 h-16 rounded-2xl bg-white/50 backdrop-blur-xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:bg-indigo-50 transition-all duration-500 border border-white/60 shadow-[0_4px_12px_rgba(0,0,0,0.04)]">
                     <Icon className="w-7 h-7 text-indigo-500 transition-colors drop-shadow-sm" />
                   </div>
                   <div>

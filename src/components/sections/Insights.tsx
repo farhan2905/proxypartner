@@ -22,7 +22,7 @@ export default function Insights() {
 
   return (
     <section ref={ref} className="bg-transparent py-16 md:py-24" id="insights">
-      <div className="w-[92vw] max-w-[1600px] mx-auto px-4 md:px-8 lg:px-12">
+      <div className="w-full max-w-[1400px] mx-auto px-4 md:px-8 lg:px-12">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
           <div className="max-w-2xl">
             <SectionTag text="INSIGHTS & RESOURCES" variant="dark" />

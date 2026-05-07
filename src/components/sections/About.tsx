@@ -60,7 +60,7 @@ export default function About() {
       <div className="absolute top-0 right-[-10%] w-[500px] h-[500px] bg-indigo-200/50 rounded-full blur-[120px] pointer-events-none animate-orb-2" />
       <div className="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] bg-violet-200/40 rounded-full blur-[120px] pointer-events-none animate-orb-3" />
       
-      <div className="w-[92vw] max-w-[1600px] mx-auto px-4 md:px-8 lg:px-12 relative z-10">
+      <div className="w-full max-w-[1400px] mx-auto px-4 md:px-8 lg:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-16 md:mb-20">
           {/* Left: Heading */}
           <div>
@@ -102,14 +102,14 @@ export default function About() {
                 variants={cardVariants}
                 initial="hidden"
                 animate={isInView ? 'visible' : 'hidden'}
-                className="relative overflow-hidden bg-gradient-to-br from-white/2 via-white/0.5 to-transparent backdrop-blur-[200px] p-6 md:p-7 lg:p-9 min-h-[240px] md:min-h-[260px] flex flex-col justify-between rounded-[2rem] border border-white/10 hover:border-white/20 shadow-[inset_0_3px_3px_rgba(255,255,255,0.25),inset_0_-2px_2px_rgba(0,0,0,0.05),0_20px_50px_rgba(31,38,135,0.12),0_0_1px_rgba(255,255,255,0.8)] transition-all duration-700 group hover:-translate-y-3 hover:bg-gradient-to-br hover:from-white/3 hover:via-white/1 hover:to-transparent hover:shadow-[inset_0_3px_3px_rgba(255,255,255,0.35),inset_0_-2px_2px_rgba(0,0,0,0.05),0_30px_80px_rgba(99,102,241,0.4),0_0_2px_rgba(255,255,255,1)]"
+                className="relative overflow-hidden bg-white/40 backdrop-blur-2xl p-6 md:p-7 lg:p-9 min-h-[240px] md:min-h-[260px] flex flex-col justify-between rounded-[2rem] border border-white/60 shadow-[0_8px_32px_rgba(31,38,135,0.08),inset_0_1px_0_rgba(255,255,255,0.6)] transition-all duration-700 group hover:-translate-y-3 hover:bg-white/60 hover:border-white/80 hover:shadow-[0_20px_60px_rgba(99,102,241,0.15),inset_0_1px_0_rgba(255,255,255,0.8)]"
               >
                 {/* Subtle light sweep & glow on hover */}
                 <div className="absolute top-0 left-[-100%] w-[50%] h-[200%] bg-gradient-to-r from-transparent via-white/25 to-transparent rotate-[30deg] opacity-0 group-hover:opacity-100 group-hover:left-[200%] transition-all duration-1000 pointer-events-none" />
                 
                 {/* Content */}
                 <div className="relative z-10 flex flex-col h-full">
-                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-white/5 to-transparent flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-gradient-to-br group-hover:from-indigo-500/8 group-hover:to-transparent transition-all duration-500 border border-white/10 shadow-[inset_0_3px_2px_rgba(255,255,255,0.25),0_4px_12px_rgba(0,0,0,0.05)]">
+                  <div className="w-14 h-14 rounded-2xl bg-white/50 backdrop-blur-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-indigo-50 transition-all duration-500 border border-white/60 shadow-[0_4px_12px_rgba(0,0,0,0.04)]">
                     <Icon className="w-6 h-6 text-indigo-500 transition-colors drop-shadow-sm" />
                   </div>
                   <div>

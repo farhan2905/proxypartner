@@ -26,7 +26,7 @@ export default function Process() {
       </div>
       
       <div className="sticky top-0 h-[100vh] flex flex-col justify-center overflow-hidden z-10">
-        <div className="w-[92vw] max-w-[1600px] mx-auto w-full px-4 md:px-8 lg:px-12 mb-8 mt-12 md:mt-0 flex-shrink-0">
+        <div className="w-full max-w-[1400px] mx-auto px-4 md:px-8 lg:px-12 mb-8 mt-12 md:mt-0 flex-shrink-0">
           <SectionTag text="OUR WORK" variant="dark" />
           <motion.h2 
             initial={{ opacity: 0, y: 20 }} 
